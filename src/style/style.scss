@@ -51,8 +51,9 @@ img{vertical-align: top;}
 h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
 
 body{
+	position: relative;
     font-family: var(--main-font);
-    // color: var(--text-color-dark);
+    color: var(--black);
     //padding-top: 90px;
     min-height: 100dvh;
     display: flex;

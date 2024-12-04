@@ -1,0 +1,116 @@
+@import './../../../style/common';
+
+.main {
+    width: 100%;
+    background-image: url('/images/main.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: right;
+    height: 100dvh;
+    flex-shrink: 0;
+    min-height: max-content;
+
+    .content {
+        width: 60%;
+        height: 100%;
+        max-width: 960px;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        backdrop-filter: blur(7px);
+        background: rgba(255, 255, 255, 0.50);
+        padding-top: 30px;
+        padding-right: 15px;
+        @include adaptiveProperty(padding-left, 100, 15);
+        @include adaptiveProperty(padding-bottom, 100, 15);
+
+        @include mediaMaxWidth(768) {
+            width: 100%;
+        }
+
+        .logo {
+            font-size: 36px;
+            font-weight: 600;
+            
+            & span {
+                color: var(--blue);
+            }
+        }
+
+        .description {
+            margin-top: auto;
+
+            & h1 {
+                @include adaptiveFont(64, 30);
+                font-weight: 600;
+                margin-bottom: 55px;
+            }
+
+            .description_item {
+                @include adaptiveFont(16, 14);
+                color: var(--grey);
+                max-width: 555px;
+                font-weight: 500;
+                margin-bottom: 25px;
+            }
+
+            .adress {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                margin-top: 40px;
+                margin-bottom: 40px;
+
+                & p {
+                    @include adaptiveFont(16, 14);
+                    font-weight: 600;
+                }
+            }
+
+            .scroll_down {
+                margin-top: 50px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                width: max-content;
+                gap: 9px;
+
+                & span {
+                    position: relative;
+                    display: block;
+                    width: 6px;
+                    height: 6px;
+                    background-color: var(--black);
+                    border-radius: 50%;
+                    animation: jump 5s cubic-bezier(0.25, 0.1, 0.22, 0.77) infinite;
+
+                    &:nth-child(2) {
+                        animation-delay: 0.08s;
+                    }
+                    &:nth-child(3) {
+                        animation-delay: 0.16s;
+                    }
+                }
+
+                & img {
+                    position: relative;
+                    animation: jump 5s cubic-bezier(0.25, 0.1, 0.22, 0.77) infinite;
+                    animation-delay: 0.24s;
+                }
+            }
+        }
+    }
+}
+
+@keyframes jump {
+    0%, 80% {}
+    87% {
+        transform: translateY(0);
+    }
+    90% {
+        transform: translateY(7px);
+    }
+    93% {
+        transform: translateY(0);
+    }
+}
