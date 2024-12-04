@@ -1,0 +1,12 @@
+@import './../../../style/common';
+
+.main_title {
+    @include adaptiveFont(64, 30);
+    font-weight: 500;
+    color: var(--black);
+    margin-bottom: 24px;
+    
+    &.white {
+        color: var(--white);
+    }
+}

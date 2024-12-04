@@ -1,0 +1,24 @@
+@import './../../../style/common';
+
+.main_button {
+    max-width: max-content;
+    padding: 14px 30px;
+    background: var(--blue);
+    border-radius: 30px;
+    font-weight: 500;
+    box-shadow: 0 0 15px 0 var(--blue);
+    @include adaptiveFont(18, 14);
+    border: 1px solid var(--blue);
+    color: var(--white);
+    transition: 0.4s;
+    @include mediaMinWidth(992) {
+        &:hover {
+            box-shadow: none;
+        }
+    }
+
+    &.small {
+        padding: 10px 25px;
+        @include adaptiveFont(16, 12);
+    }
+}
