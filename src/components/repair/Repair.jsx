@@ -1,11 +1,9 @@
 import React from 'react';
 
-const Repair = () => {
+export default function Repair () {
     return (
-        <div>
+        <div className='repair'>
             
         </div>
     );
 };
-
-export default Repair;

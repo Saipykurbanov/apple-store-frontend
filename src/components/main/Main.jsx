@@ -1,11 +1,10 @@
-import React from 'react';
+export default function Main () {
 
-const Main = () => {
     return (
-        <div>
-            
+        <div className='main'>
+            <div className="container">
+                
+            </div>
         </div>
     );
-};
-
-export default Main;
+}
