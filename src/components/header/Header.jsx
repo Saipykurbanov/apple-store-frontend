@@ -1,9 +1,8 @@
 'use client'
 
-import { useEffect, useState } from 'react';
 import BurgerBtn from './ccomponents/BurgerBtn';
-import './css/header.scss';
 import useHeader from './hooks/useHeader';
+import './css/header.scss';
 
 export default function Header () {
     const header = useHeader()

@@ -1,10 +1,12 @@
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 
 export default function useHeader () {
     const [link, setLink] = useState('main')
     const [open, setOpen] = useState(true)
+    const isBlocked = useRef(false)
  
     const openHeader = () => {
+        isBlocked.current = true
         setOpen(prev => prev ? false : true)
     }
 
@@ -14,17 +16,26 @@ export default function useHeader () {
     }
 
     const onScrollFunction = (e) => {
-        if(window.scrollY > 100) {
-            setOpen(false)
+        console.log(e.deltaY)
+        if(!isBlocked.current) {
+            if(window.scrollY > 100) {
+                setOpen(false)
+            } else if(e.deltaY < 0) {
+                setOpen(true)
+            }
+
+            return
         } else {
-            setOpen(true)
+            if (window.scrollY < 100) {
+                isBlocked.current = false
+            }
         }
         return
     }
 
     useEffect(() => {
         if(window.innerWidth > 768) {
-            window.addEventListener('scroll', onScrollFunction)
+            window.addEventListener('wheel', onScrollFunction)
           }
     }, [])
 
