@@ -18,9 +18,10 @@ export default function Home() {
 
       <Repair />
 
+      <Store />
+      
       <div className="container">
 
-        <Store />
 
         <Contacts />
 
