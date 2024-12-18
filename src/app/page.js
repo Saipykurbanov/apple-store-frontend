@@ -22,10 +22,7 @@ export default function Home() {
 
       <Contacts />
       
-      <div className="container">
-
-        <Footer />
-      </div>
+      <Footer />
     </>
   );
 }
