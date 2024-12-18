@@ -1,0 +1,34 @@
+@import './../../../style/common';
+
+footer {
+    width: 100%;
+    background-color: var(--black);
+    padding: 50px 0;
+    @include adaptiveProperty(padding-left, 100, 15);
+    @include adaptiveProperty(padding-right, 100, 15);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+
+    & nav {
+        width: 100%;
+        max-width: 400px;
+        gap: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+
+        & a {
+            color: var(--white);
+            font-weight: 500;
+            font-size: 16px;
+        }
+    }
+
+    & p.copyright {
+        font-size: 16px;
+        color: var(--semi-white);
+        font-weight: 500;
+    }
+}

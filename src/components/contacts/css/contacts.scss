@@ -1,0 +1,58 @@
+@import './../../../style/common';
+
+.contacts {
+    display: flex;
+    gap: 40px;
+
+    @include mediaMaxWidth(992) {
+        flex-direction: column-reverse;
+    }
+
+    .contact_content {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        
+        .adress {
+            @include adaptiveFont(28, 20);
+            font-weight: 500;
+            color: var(--black);
+            margin-top: 50px;
+            margin-bottom: 30px;
+        }
+
+        .social_block {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-bottom: 40px;
+
+            & a {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+
+                & img {
+                    width: 27px;
+                }
+
+                & p {
+                    font-size: 20px;
+                    color: var(--grey);
+                }
+            }
+        }
+    }
+
+    .map_container {
+        min-height: 50dvh;
+        background-color: var(--grey);
+        flex: 1;
+        border-radius: 30px;
+        width: 100%;
+        
+        @include mediaMinWidth(991) {
+            min-width: 400px;
+        }
+    }
+}
