@@ -19,10 +19,14 @@ export default function Home() {
       <Repair />
 
       <Store />
-
-      <Contacts />
       
-      <Footer />
+      <div className="container">
+
+
+        <Contacts />
+
+        <Footer />
+      </div>
     </>
   );
 }
