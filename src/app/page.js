@@ -5,6 +5,7 @@ import Main from "@/components/main/Main";
 import Repair from "@/components/repair/Repair";
 import SocialWidget from "@/components/social_widget/SocialWidget";
 import Store from "@/components/store/Store";
+import RepairModal from "@/modal/repair_modal/RepairModal";
 
 export default function Home() {
   
@@ -23,6 +24,8 @@ export default function Home() {
       <Contacts />
       
       <Footer />
+
+      <RepairModal />
     </>
   );
 }

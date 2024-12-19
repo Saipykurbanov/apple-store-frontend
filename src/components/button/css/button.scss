@@ -21,4 +21,34 @@
         padding: 10px 25px;
         @include adaptiveFont(16, 12);
     }
+
+    &.round {
+        height: 50px;
+        min-width: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        flex-shrink: 0;
+        
+        @include mediaMinWidth(992) {
+            &:hover {
+                box-shadow: 0 0 20px -5px var(--white);
+            }
+        }
+    }
+
+    &.whiteBack {
+        background-color: var(--white);
+        color: var(--black);
+        box-shadow: none;
+        border: 0;
+
+        @include mediaMinWidth(992) {
+            &:hover {
+                box-shadow: none;
+            }
+        }
+    }
 }

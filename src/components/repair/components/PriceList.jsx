@@ -3,6 +3,7 @@ import React, { useRef } from 'react';
 import '@splidejs/react-splide/css';
 import { Splide, SplideSlide, SplideTrack } from '@splidejs/react-splide';
 import Button from '@/components/button/Button';
+import Store from '@/utils/Store';
 
 const PriceList = () => {
 
@@ -19,6 +20,11 @@ const PriceList = () => {
         splideRef.current.splide.go('>'); // Перейти к следующему слайду
       }
     };
+
+    const openModal = () => {
+        document.body.style.overflow = 'hidden'
+        Store.setListener('open_repair_modal', prev => prev = true)
+    }
 
     return (
         <div className='price_list'>
@@ -87,7 +93,7 @@ const PriceList = () => {
             </div>
             
             <div className="button_flex">
-                <Button>Узнать подробности</Button>
+                <Button callback={openModal}>Узнать подробности</Button>
                 <div className="slogan">Нашли свою проблему? Тогда свяжитесь с нами!</div>
             </div>
             
