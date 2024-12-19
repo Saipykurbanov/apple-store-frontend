@@ -1,0 +1,43 @@
+@import './../../../style/common';
+
+.modal_input {
+    width: 100%;
+    max-width: 760px;
+
+    & label {
+        display: block;
+        @include adaptiveFont(20, 14);
+        font-weight: 400;
+        margin-bottom: 10px;
+    }
+
+    & input {
+        border-radius: 30px;
+        width: 100%;
+        font-weight: 500;
+        @include adaptiveFont(16, 14);
+        padding: 15px 20px;
+    }
+
+    &.white {
+        & label {
+            color: var(--white);
+        }
+
+        & input {
+            color: var(--black);
+            background-color: var(--white);
+        }
+    }
+
+    &.black {
+        & label {
+            color: var(--black);
+        }
+
+        & input {
+            color: var(--black);
+            background-color: var(--black);
+        }
+    }
+}

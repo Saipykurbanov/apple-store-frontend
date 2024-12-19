@@ -1,0 +1,21 @@
+@import './../../../style/common';
+
+.modal_title {
+    width: 100%;
+    max-width: 560px;
+    font-weight: 500;
+    margin-bottom: 55px;
+    @include adaptiveFont(40, 24);
+
+    &.white {
+        color: var(--white);
+    }
+
+    &.black {
+        color: var(--black);
+    }
+    
+    &.center {
+        text-align: center;
+    }
+}

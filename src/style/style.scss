@@ -77,3 +77,52 @@ input:-webkit-autofill:focus {
 	width: 100%;
 	@include adaptiveProperty(padding, 100, 15);
 }
+
+@keyframes Open {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+@keyframes OpenModal {
+    0% {
+        transform: translateY(100%);
+    }
+    100% {
+        transform: translateY(0%);
+    }
+}
+
+@keyframes CloseModal {
+    0% {
+        transform: translateY(0%);
+    }
+    100% {
+        transform: translateY(100%);
+    }
+}
+
+@keyframes OpenModalWrapper {
+    0% {
+		backdrop-filter: blur(10px);
+        background-color: transparent;
+    }
+    100% {
+		backdrop-filter: blur(10px);
+        background: rgba(145, 145, 145, 0.588);
+    }
+}
+
+@keyframes CloseModalWrapper {
+    0% {
+		backdrop-filter: blur(0px);
+        background: rgba(145, 145, 145, 0.588);
+    }
+    100% {
+		backdrop-filter: blur(0px);
+        background-color: transparent;
+    }
+}
