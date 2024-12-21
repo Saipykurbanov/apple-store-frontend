@@ -1,0 +1,121 @@
+@import './../../../style/common';
+
+.store_modal_wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(0px);
+    background: transparent;
+    z-index: 100;
+    display: flex;
+    padding: 10px;
+    padding-bottom: 0;
+    overflow: auto;
+    transition: 0.7s ease;
+    transform: translateY(100%);
+    will-change: transform;
+
+    .store_modal {
+        margin: auto auto 0 auto;
+        position: relative;
+        width: 90%;
+        background-color: var(--white);
+        border-radius: 30px 30px 0 0;
+        @include adaptiveProperty(padding, 60, 50);
+        @include adaptiveProperty(padding-left, 60, 20);
+        @include adaptiveProperty(padding-right, 60, 20);
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+
+        @include mediaMaxWidth(768) {
+            width: 100%;
+        }
+
+        .store_flex {
+            display: flex;
+            width: 100%;
+            margin-bottom: 100px;
+            gap: 80px;
+
+            .store_flex_item {
+                flex: 1;
+                
+                &.preview {
+                    min-width: max-content;
+                    display: flex;
+                    gap: 50px;
+
+                    .preview_image {
+                        width: 100%;
+                        max-width: 350px;
+                    }
+
+                    .characters {
+                        display: flex;
+                        flex-direction: column;
+                        height: 100%;
+                        justify-content: space-between;
+                        grid-template-columns: 1fr;
+
+                        .character_item {
+                            margin-bottom: 10px;
+
+                            & h4 {
+                                @include adaptiveFont(20, 16);
+                                font-weight: 400;
+                                color: var(--grey);
+                                margin-bottom: 7px;
+                            }
+
+                            & p {
+                                @include adaptiveFont(28, 22);
+                                color: var(--black);
+                                font-weight: 500;
+                                display: flex;
+                                gap: 12px;
+                                align-items: center;
+
+                                & span {
+                                    display: block;
+                                    width: 21px;
+                                    height: 21px;
+                                    border-radius: 50%;
+
+                                    &.blue {
+                                        background-color: #8DA0EC;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .store_modal_body {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+            @include adaptiveProperty(gap, 40, 30);
+        }
+    }
+
+    &.open {
+        transform: translateY(0%);
+        background: rgba(145, 145, 145, 0.588);
+        backdrop-filter: blur(10px);
+    }
+
+    // &.close {
+    //     animation: CloseModalWrapper 0.7s forwards;
+
+    //     .repair_modal {
+    //         animation: CloseModal 0.5s forwards;
+    //     }
+    // }
+}

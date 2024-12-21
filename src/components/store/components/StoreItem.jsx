@@ -1,7 +1,8 @@
+'use client'
 import Button from "@/components/button/Button";
 import ItemOption from "./ItemOption";
 
-export default function StoreItem () {
+export default function StoreItem ({ openModal }) {
 
     return (
         <div className="store_item">
@@ -42,7 +43,7 @@ export default function StoreItem () {
                     <div className="color" style={{background: '#F2ADDA'}}></div>
                 </div>
 
-                <Button>Купить</Button>
+                <Button callback={openModal}>Купить</Button>
             </div>
         </div>
     )

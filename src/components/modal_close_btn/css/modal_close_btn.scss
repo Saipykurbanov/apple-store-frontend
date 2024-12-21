@@ -1,0 +1,58 @@
+@import './../../../style/common';
+
+.modal_close_button {
+    position: absolute;
+    @include adaptiveProperty(top, 25, 15);
+    @include adaptiveProperty(right, 25, 15);
+    @include adaptiveProperty(width, 41, 30);
+    @include adaptiveProperty(height, 41, 30);
+    width: 41px;
+    height: 41px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+
+    & svg rect {
+        transition: 0.3s;
+    }
+    
+    &.black {
+        background-color: var(--black);
+        border: 2px solid var(--black);
+
+        & svg rect {
+            fill: var(--white);
+        }
+
+        @include mediaMinWidth (992) {
+            &:hover {
+                background-color: transparent;
+
+                & svg rect {
+                    fill: var(--black);
+                }
+            }
+        }
+    }
+
+    &.white {
+        background-color: var(--white);
+        border: 2px solid var(--white);
+
+        & svg rect {
+            fill: var(--black);
+        }
+
+        @include mediaMinWidth (992) {
+            &:hover {
+                background-color: transparent;
+
+                & svg rect {
+                    fill: var(--white);
+                }
+            }
+        }
+    }
+}
