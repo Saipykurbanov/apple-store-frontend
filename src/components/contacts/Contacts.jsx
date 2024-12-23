@@ -8,7 +8,7 @@ import './css/contacts.scss';
 export default function Contacts () {
 
     return (
-        <div className="contacts container">
+        <div className="contacts container" id='contacts'>
             <div className="contact_content">
                 <Title 
                     title={'Контакты.'}

@@ -4,6 +4,7 @@ footer {
     width: 100%;
     background-color: var(--black);
     padding: 50px 0;
+    padding-bottom: 100px;
     @include adaptiveProperty(padding-left, 100, 15);
     @include adaptiveProperty(padding-right, 100, 15);
     display: flex;

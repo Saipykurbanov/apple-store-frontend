@@ -4,7 +4,7 @@ import './css/store.scss';
 
 export default function Store () {
     return (
-        <div className="store container">
+        <div className="store container" id='store'>
             <Title 
                 mode={''}
                 title={'Магазин Apple iPhone.'}

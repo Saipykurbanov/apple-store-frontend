@@ -4,7 +4,7 @@ import './css/main.scss';
 export default function Main () {
 
     return (
-        <div className='main'>
+        <div className='main' id='main'>
             <div className="content">
                 <div className="logo"><span>L</span>OGO<span>.</span></div>
 
