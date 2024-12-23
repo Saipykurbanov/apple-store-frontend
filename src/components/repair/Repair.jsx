@@ -6,7 +6,7 @@ import Advantages from './components/Advantages';
 
 export default function Repair () {
     return (
-        <div className='repair'>
+        <div className='repair' id='repair'>
             <Title 
                 mode={'white'}
                 title={'Ремонт техники.'}
