@@ -23,7 +23,7 @@
         width: 90%;
         background-color: var(--black);
         border-radius: 30px 30px 0 0;
-        @include adaptiveProperty(padding, 60, 40);
+        @include adaptiveProperty(padding, 60, 50);
         @include adaptiveProperty(padding-left, 60, 20);
         @include adaptiveProperty(padding-right, 60, 20);
         display: flex;
@@ -67,18 +67,23 @@
                 & input {
                     position: relative;
                     border-radius: 30px;
-                    padding: 15px 20px;
                     flex: 1;
                     min-width: 0;
                     font-weight: 500;
                     color: var(--black);
                     @include adaptiveFont(16, 14);
+                    @include adaptiveProperty(padding-top, 15, 10);
+                    @include adaptiveProperty(padding-bottom, 15, 10);
+                    @include adaptiveProperty(padding-left, 20, 13);
+                    @include adaptiveProperty(padding-right, 20, 13);
                     z-index: 1;
                 }
 
                 & .main_button {
                     position: relative;
                     z-index: 1;
+                    @include adaptiveProperty(width, 50, 38);
+                    @include adaptiveProperty(height, 50, 38);
                     @include mediaMinWidth(992) {
                         &:hover {
                             box-shadow: 0px 0px 5px 4px rgba(0, 0, 0, 0.2);

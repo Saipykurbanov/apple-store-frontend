@@ -4,7 +4,7 @@
     width: 100%;
     max-width: 560px;
     font-weight: 500;
-    margin-bottom: 55px;
+    @include adaptiveProperty(margin-bottom, 55, 30);
     @include adaptiveFont(40, 24);
 
     &.white {
@@ -17,5 +17,9 @@
     
     &.center {
         text-align: center;
+    }
+
+    &.flex_left {
+        align-self: flex-start;
     }
 }

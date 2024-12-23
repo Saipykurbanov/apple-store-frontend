@@ -16,7 +16,11 @@
         width: 100%;
         font-weight: 500;
         @include adaptiveFont(16, 14);
-        padding: 15px 20px;
+        @include adaptiveProperty(padding-top, 15, 10);
+        @include adaptiveProperty(padding-bottom, 15, 10);
+        @include adaptiveProperty(padding-left, 20, 13);
+        @include adaptiveProperty(padding-right, 20, 13);
+
     }
 
     &.white {
@@ -37,7 +41,7 @@
 
         & input {
             color: var(--black);
-            background-color: var(--black);
+            background-color: var(--background-grey);
         }
     }
 }

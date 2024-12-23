@@ -5,11 +5,12 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 40px;
+    @include adaptiveProperty(gap, 40, 25);
 
     .text {
         text-align: center;
         font-weight: 500;
+        @include adaptiveFont(16, 14);
     }
 
     .social_flex {
