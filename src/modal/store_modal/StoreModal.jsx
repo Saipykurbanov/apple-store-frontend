@@ -9,7 +9,7 @@ import ModalCloseBtn from "@/components/modal_close_btn/ModalCloseBtn";
 
 export default function StoreModal () {
 
-    const [isOpen, setIsOpen] = useState(true)
+    const [isOpen, setIsOpen] = useState(false)
 
     Store.useListener('open_store_modal', setIsOpen)
 
@@ -24,7 +24,7 @@ export default function StoreModal () {
                 <ModalCloseBtn mode={'black'} callback={closeModal}/>
                 
                 <div className="store_flex">
-                    <div className="store_flex_item">
+                    <div className="store_flex_item left">
                         <ModalTitle mode={'black'}>Оставьте заявку и мы вам перезвоним!</ModalTitle>
                         
                         <div className="store_modal_body">
@@ -46,7 +46,9 @@ export default function StoreModal () {
                     </div>
 
                     <div className="store_flex_item preview">
-                        <img className="preview_image" src="/images/iphoneblue.svg" alt="" />
+                        <div className="preview_image">
+                            <img className="" src="/images/iphoneblue.svg" alt="" />
+                        </div>
 
                         <div className="characters">
                             <div className="character_item">

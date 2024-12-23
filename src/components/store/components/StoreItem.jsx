@@ -43,7 +43,7 @@ export default function StoreItem ({ openModal }) {
                     <div className="color" style={{background: '#F2ADDA'}}></div>
                 </div>
 
-                <Button callback={openModal}>Купить</Button>
+                <Button callback={openModal}>Заказать</Button>
             </div>
         </div>
     )

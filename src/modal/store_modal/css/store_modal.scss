@@ -37,20 +37,52 @@
         .store_flex {
             display: flex;
             width: 100%;
-            margin-bottom: 100px;
-            gap: 80px;
+            align-items: flex-end;
+            @include adaptiveProperty(margin-bottom, 100, 40);
+            @include adaptiveProperty(gap, 80, 30);
+
+            @include mediaMaxWidth(1200) {
+                gap: 30px;
+            }
+
+            @include mediaMaxWidth(900) {
+                flex-direction: column;
+                align-items: flex-start;
+            }
 
             .store_flex_item {
                 flex: 1;
-                
+                width: 100%;
+
                 &.preview {
-                    min-width: max-content;
-                    display: flex;
-                    gap: 50px;
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    height: min-content;
+                    align-items: flex-end;
+                    @include adaptiveProperty(gap, 50, 20);
+
+                    @include mediaMaxWidth(1200) {
+                        gap: 20px;
+                    }
+
+                    @include mediaMaxWidth(900) {
+                        grid-template-columns: 3fr 2fr;
+                    }
 
                     .preview_image {
                         width: 100%;
-                        max-width: 350px;
+                        max-width: 320px;
+                        min-width: 200px;
+
+                        & img {
+                            height: auto;
+                            width: 100%;
+                        }
+
+                        @include mediaMaxWidth(900) {
+                            max-width: 300px;
+                            min-width: 0;
+                        }
                     }
 
                     .characters {
@@ -58,36 +90,41 @@
                         flex-direction: column;
                         height: 100%;
                         justify-content: space-between;
-                        grid-template-columns: 1fr;
+                        white-space: nowrap;
 
                         .character_item {
                             margin-bottom: 10px;
 
                             & h4 {
-                                @include adaptiveFont(20, 16);
+                                @include adaptiveFont(20, 14);
                                 font-weight: 400;
                                 color: var(--grey);
-                                margin-bottom: 7px;
+                                @include adaptiveProperty(margin-bottom, 7, 4);
                             }
 
                             & p {
-                                @include adaptiveFont(28, 22);
+                                @include adaptiveFont(28, 14);
                                 color: var(--black);
                                 font-weight: 500;
                                 display: flex;
-                                gap: 12px;
+                                @include adaptiveProperty(gap, 12, 7);
+
                                 align-items: center;
 
                                 & span {
                                     display: block;
-                                    width: 21px;
-                                    height: 21px;
+                                    @include adaptiveProperty(width, 21, 13);
+                                    @include adaptiveProperty(height, 21, 13);
                                     border-radius: 50%;
 
                                     &.blue {
                                         background-color: #8DA0EC;
                                     }
                                 }
+                            }
+
+                            @include mediaMaxWidth(900) {
+                                width: min-content;
                             }
                         }
                     }
@@ -96,12 +133,11 @@
         }
 
         .store_modal_body {
-            width: 100%;
+            max-width: 100%;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 40px;
-            @include adaptiveProperty(gap, 40, 30);
+            @include adaptiveProperty(gap, 40, 15);
         }
     }
 

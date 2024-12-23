@@ -12,8 +12,8 @@ export default function StoreList () {
     return (
         <div className="store_list">
             <StoreItem openModal={openModal}/>
-            <StoreItem />
-            <StoreItem />
+            <StoreItem openModal={openModal}/>
+            <StoreItem openModal={openModal}/>
         </div>
     )
 }
