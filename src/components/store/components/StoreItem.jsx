@@ -39,8 +39,7 @@ export default function StoreItem ({ openModal }) {
 
                 <div className="colors_flex">
                     <div className="color" style={{background: '#8DA0EC'}}></div>
-                    <div className="color" style={{background: '#B0D4D2'}}></div>
-                    <div className="color" style={{background: '#F2ADDA'}}></div>
+                    <p className="memory">4/256 гб.</p>
                 </div>
 
                 <Button callback={openModal}>Заказать</Button>

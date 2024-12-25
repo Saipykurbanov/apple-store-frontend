@@ -28,14 +28,6 @@ export default function useHeader () {
             isBlocked.current = false
         }
 
-        // if(!isBlocked.current) {
-
-        // } else {
-        //     if (window.scrollY <= 0) {
-        //         isBlocked.current = false
-        //     }
-        // }
-
         setLast(prev => prev = window.scrollY)
         return
     }
