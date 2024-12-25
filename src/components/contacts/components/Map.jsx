@@ -31,8 +31,8 @@ export default function Map () {
             <YMapDefaultFeaturesLayer />
 
             <YMapMarker coordinates={[34.099222, 44.937404]}>
-              <div className="custom-marker">
-                <div className="marker-label">iFix Store</div>
+              <div className="custom_marker">
+                <div className="marker_label">iFIx <span>Store.</span> </div>
               </div>
             </YMapMarker>
         </YMap>

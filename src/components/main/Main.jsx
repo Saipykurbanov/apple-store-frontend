@@ -6,7 +6,7 @@ export default function Main () {
     return (
         <div className='main' id='main'>
             <div className="content">
-                <div className="logo"><span>L</span>OGO<span>.</span></div>
+                <div className="logo"><span></span>iFix<span> Store.</span></div>
 
                 <div className="description">
                     <h1>
