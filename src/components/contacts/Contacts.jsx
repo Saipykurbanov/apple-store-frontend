@@ -2,8 +2,8 @@
 
 import Button from '../button/Button';
 import Title from '../title/Title';
+import Map from './components/Map';
 import './css/contacts.scss';
-
 
 export default function Contacts () {
 
@@ -35,8 +35,7 @@ export default function Contacts () {
                 <Button>Свяжитесь с нами</Button>
             </div>
 
-            <div className="map_container">
-            </div>
+            <Map />
         </div>
     );
 }
