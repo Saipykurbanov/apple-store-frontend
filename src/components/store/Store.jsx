@@ -2,7 +2,7 @@ import Title from '../title/Title';
 import StoreList from './components/StoreList';
 import './css/store.scss';
 
-export default function Store () {
+export default function Store ({ list }) {
     return (
         <div className="store container" id='store'>
             <Title 
@@ -11,7 +11,7 @@ export default function Store () {
                 description={'Продаем новые айфоны по низким ценам — техника поступает напрямую со склада, без лишних наценок!'}
             />
 
-            <StoreList />
+            <StoreList {...list}/>
         </div>
     )
 }

@@ -2,7 +2,7 @@
 import Store from "@/utils/Store";
 import StoreItem from "./StoreItem";
 
-export default function StoreList () {
+export default function StoreList (list) {
 
     const openModal = () => {
         document.body.style.overflow = 'hidden'

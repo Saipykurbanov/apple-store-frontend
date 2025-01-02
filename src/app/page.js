@@ -7,8 +7,12 @@ import SocialWidget from "@/components/social_widget/SocialWidget";
 import Store from "@/components/store/Store";
 import RepairModal from "@/modal/repair_modal/RepairModal";
 import StoreModal from "@/modal/store_modal/StoreModal";
+import Api from "@/utils/Api";
+import Loading from "./loading";
 
-export default function Home() {
+export default async function Home() {
+
+  const store = await Api.get(`api/products/all`)
   
   return (
     <>
@@ -20,7 +24,7 @@ export default function Home() {
 
       <Repair />
 
-      <Store />
+      <Store list={store}/>
     
       <Contacts />
       
