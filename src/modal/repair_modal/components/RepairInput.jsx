@@ -1,12 +1,13 @@
+'use client'
 import Button from "@/components/button/Button";
-import { useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
-export default function RepairInput ({ label, value, callback }) {
+export default function RepairInput ({ label, value, callback, services,  }) {
     const [isOpen, setIsOpen] = useState(false)
     const listWrapper = useRef(null)
     const list = useRef(null)
 
-    const openList = (e) => {
+    const openList = useCallback((e) => {
         e.preventDefault()
         const h = list.current.offsetHeight
 
@@ -19,22 +20,36 @@ export default function RepairInput ({ label, value, callback }) {
             setIsOpen(false)
             return
         }
-    }
+    }, [setIsOpen, isOpen, list.current, listWrapper.current])
+
+    useEffect(() => {
+        if(isOpen) {
+            const close = (e) => openList(e)
+            window.addEventListener('click', close)
+
+            return () => {
+                window.removeEventListener('click', close)
+            }
+        }
+    }, [isOpen])
 
     return (
         <div className="repair_input">
             <label htmlFor="">{label}</label>
 
-            <div className={`input_wrapper`}>
-                <input type="text" value={value} onChange={callback}/>  
+            <div className={`input_wrapper`} onClick={(e) => openList(e)}  >
+                <div className="service_title" mode={'round whiteBack'}>{value}</div>
 
-                <Button callback={openList} mode={'round whiteBack'}><img src="/icons/arrow_down.svg" alt="" /></Button>
+                <Button callback={(e) => openList(e)} mode={'round whiteBack'}><img src="/icons/arrow_down.svg" alt="" /></Button>
 
                 <div className={`list_wrapper ${!isOpen ? 'close' : ''}`} ref={listWrapper}>
-                    <div className={`list ${isOpen ? 'open' : ''}`} ref={list}>
-                        <p>Замена дисплея</p>
-                        <p>Замена аккумулятора</p>
-                        <p>Замена дисплея</p>
+                    <div className={`list open`} ref={list}>
+                        {services?.length ? 
+                            services.map((el, i) => (
+                                <p key={i} onClick={() => callback(el.title, el)}>{el.title}</p>
+                            ))
+                        : 
+                        <></>}
                     </div>
                 </div>
             </div>

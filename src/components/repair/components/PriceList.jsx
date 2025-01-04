@@ -4,8 +4,9 @@ import '@splidejs/react-splide/css';
 import { Splide, SplideSlide, SplideTrack } from '@splidejs/react-splide';
 import Button from '@/components/button/Button';
 import Store from '@/utils/Store';
+import Api from '@/utils/Api';
 
-const PriceList = () => {
+const PriceList = ({services}) => {
 
     const splideRef = useRef(null);
 
@@ -21,9 +22,9 @@ const PriceList = () => {
       }
     };
 
-    const openModal = () => {
+    const openModal = (el) => {
         document.body.style.overflow = 'hidden'
-        Store.setListener('open_repair_modal', prev => prev = true)
+        Store.setListener('open_repair_modal', el)
     }
 
     return (
@@ -44,36 +45,25 @@ const PriceList = () => {
                 }}
                 
             >   
-                <SplideSlide>
-                    <div>
-                        <img src={'/icons/display.svg'} alt="" />
-                    </div>
-                    
-                    <h4>Замена дисплея</h4>
+            {services.length ? 
+                services.map((el) => (
+                    <SplideSlide key={el.servicesid} onClick={() => openModal(el)}>
+                        <div className='service_image'>
+                            <img src={`${Api.url}images/service/${el.image}`} alt="" />
+                        </div>
+                        
+                        <h4>{el.title}</h4>
 
-                    <div className="description">
-                        качественно, быстро и по доступной цене. Восстановим ваш дисплей, с гарантией на работу!
-                    </div>
+                        <div className="description">
+                            {el.description}
+                        </div>
 
-                    <div className="price">
-                        Цена: <span>от 900 руб.</span>
-                    </div>
-                </SplideSlide>
-                <SplideSlide>
-                    <div>
-                        <img src={'/icons/display.svg'} alt="" />
-                    </div>
-                    
-                    <h4>Замена дисплея</h4>
-
-                    <div className="description">
-                        качественно, быстро и по доступной цене. Восстановим ваш дисплей, с гарантией на работу!
-                    </div>
-
-                    <div className="price">
-                        Цена: <span>от 900 руб.</span>
-                    </div>
-                </SplideSlide>
+                        <div className="price">
+                            Цена: <span>от {el.price} руб.</span>
+                        </div>
+                    </SplideSlide>
+                ))
+            :<></>}
             </Splide>
 
             <div className="custom_arrows">
@@ -93,7 +83,7 @@ const PriceList = () => {
             </div>
             
             <div className="button_flex">
-                <Button callback={openModal}>Узнать подробности</Button>
+                <Button callback={() => openModal()}>Узнать подробности</Button>
                 <div className="slogan">Нашли свою проблему? Тогда свяжитесь с нами!</div>
             </div>
             

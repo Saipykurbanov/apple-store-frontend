@@ -1,6 +1,7 @@
 @import './../../../style/common';
 
 .modal_input {
+    position: relative;
     width: 100%;
     max-width: 760px;
 
@@ -20,7 +21,23 @@
         @include adaptiveProperty(padding-bottom, 15, 10);
         @include adaptiveProperty(padding-left, 20, 13);
         @include adaptiveProperty(padding-right, 20, 13);
+        transition: 0.3s;
 
+        &.error {
+            background-color: var(--error) !important;
+        }
+    }
+
+    
+
+    .error_message {
+        position: absolute;
+        top: calc(100% + 4px);
+        left: 0;
+        @include adaptiveFont(14, 12);
+        color: var(--red);
+        opacity: 0;
+        animation: Open 0.5s forwards;
     }
 
     &.white {

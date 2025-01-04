@@ -21,4 +21,29 @@ Api.get = async (path) => {
 
 }
 
+Api.post = async (path, body) => {
+
+    try {
+        let res = await fetch(`${Api.url}${path}`, {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json;charset=utf-8"
+            },
+            body: JSON.stringify(body)
+        })
+
+        res = await res.json()
+        
+        if(res.status) {
+            return res.data
+        } else {
+            return 'error'
+        }
+    } catch(e) {
+        return 'error'
+    }
+
+}
+
+
 export default Api;

@@ -2,7 +2,7 @@
 import Store from "@/utils/Store";
 import StoreItem from "./StoreItem";
 
-export default function StoreList (list) {
+export default function StoreList ({list, course}) {
 
     const openModal = () => {
         document.body.style.overflow = 'hidden'
@@ -11,9 +11,11 @@ export default function StoreList (list) {
 
     return (
         <div className="store_list">
-            <StoreItem openModal={openModal}/>
-            <StoreItem openModal={openModal}/>
-            <StoreItem openModal={openModal}/>
+            {list?.length ? 
+                list.map((el) => (
+                    <StoreItem course={course} key={el.productid} el={el} openModal={openModal}/>
+                ))
+            :<></>}
         </div>
     )
 }

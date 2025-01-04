@@ -1,0 +1,18 @@
+<svg width="338.000000" height="224.000000" viewBox="0 0 338 224" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<desc>
+			Created with Pixso.
+	</desc>
+	<defs>
+		<clipPath id="clip529_24">
+			<rect id="Frame 47" width="338.000000" height="224.000000" fill="white" fill-opacity="0"/>
+		</clipPath>
+	</defs>
+	<rect id="Frame 47" width="338.000000" height="224.000000" fill="#FFFFFF" fill-opacity="1.000000"/>
+	<g clip-path="url(#clip529_24)">
+		<path id="Rectangle 18" d="M3 206L335 206L335 211C335 216.52 330.52 221 325 221L13 221C7.47 221 3 216.52 3 211L3 206Z" fill="#28292B" fill-opacity="1.000000" fill-rule="evenodd"/>
+		<path id="Rectangle 19" d="M40 14L298 14C306.28 14 313 20.71 313 29L313 206L25 206L25 29C25 20.71 31.71 14 40 14Z" fill="#28292B" fill-opacity="1.000000" fill-rule="evenodd"/>
+		<path id="Rectangle 15" d="M42 21L296 21C301.52 21 306 25.47 306 31L306 206L32 206L32 31C32 25.47 36.47 21 42 21Z" fill="#28292B" fill-opacity="1.000000" fill-rule="evenodd"/>
+		<path id="Rectangle 15" d="M296 21C301.52 21 306 25.47 306 31L306 206L32 206L32 31C32 25.47 36.47 21 42 21L296 21ZM296 24C299.86 24 303 27.13 303 31L303 203L35 203L35 31C35 27.13 38.13 24 42 24L296 24Z" fill="#FFFFFF" fill-opacity="1.000000" fill-rule="evenodd"/>
+		<path id="Rectangle 14" d="M149 23L189 23L189 28C189 31.31 186.31 34 183 34L155 34C151.68 34 149 31.31 149 28L149 23Z" fill="#FFFFFF" fill-opacity="1.000000" fill-rule="evenodd"/>
+	</g>
+</svg>
