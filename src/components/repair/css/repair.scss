@@ -24,6 +24,7 @@
 
         .splide {
             .splide__track   {
+                padding: 20px 0;
                 @include adaptiveProperty(padding-left, 100, 15);
                 @include adaptiveProperty(padding-right, 100, 15);
             }
@@ -34,6 +35,24 @@
                 @include adaptiveProperty(padding, 30, 15);
                 background-color: var(--white);
                 border-radius: 30px;
+                transition: transform 0.3s;
+                cursor: pointer;
+                
+                .service_image {
+                    position: relative;
+                    width: 40px;
+                    height: 40px;
+                    margin-right: auto;
+                    img {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        object-position: center;
+                        object-fit: contain;
+                    }
+                }
 
                 & h4 {
                     font-weight: 500;
@@ -58,6 +77,12 @@
 
                     & span {
                         color: var(--blue);
+                    }
+                }
+
+                @include mediaMinWidth(992) {
+                    &:hover {
+                        transform: scale(1.03);
                     }
                 }
             }

@@ -2,11 +2,13 @@
 import Button from '../button/Button';
 import './css/modal_footer.scss';
 
-export default function ModalFooter ({mode, callBack}) {
+export default function ModalFooter ({mode, callBack, loading}) {
 
     return (
         <div className={`modal_footer ${mode}`}>
-            <Button callback={callBack}>Оставить заявку</Button>
+            <Button callback={callBack}>
+                {loading ? 'Отправка...' : 'Оставить заявку'}
+            </Button>
 
             <p className="text">или свяжитесь любым удобным для вас способом</p>
 

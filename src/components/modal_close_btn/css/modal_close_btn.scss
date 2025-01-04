@@ -13,6 +13,8 @@
     align-items: center;
     justify-content: center;
     transition: 0.3s;
+    cursor: pointer;
+    z-index: 10;
 
     & svg rect {
         transition: 0.3s;
