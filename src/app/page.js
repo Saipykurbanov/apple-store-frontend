@@ -36,7 +36,7 @@ export default async function Home() {
 
       <RepairModal services={services}/>
 
-      <StoreModal />
+      <StoreModal course={course}/>
 
       <Loading />
     </>
