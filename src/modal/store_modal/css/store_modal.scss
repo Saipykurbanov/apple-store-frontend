@@ -16,11 +16,14 @@
     transition: 0.7s ease;
     transform: translateY(100%);
     will-change: transform;
+    @include adaptiveProperty(padding-top, 100, 30);
 
     .store_modal {
         margin: auto auto 0 auto;
         position: relative;
         width: 90%;
+        min-height: 100%;
+        max-height: 980px;
         background-color: var(--white);
         border-radius: 30px 30px 0 0;
         @include adaptiveProperty(padding, 60, 50);
@@ -28,21 +31,74 @@
         @include adaptiveProperty(padding-right, 60, 20);
         display: flex;
         align-items: center;
+        justify-content: center;
         flex-direction: column;
 
         @include mediaMaxWidth(768) {
             width: 100%;
         }
 
+        .success_message {
+            width: 100%;
+            text-align: center;
+            max-width: 560px;
+            opacity: 0;
+            justify-self: center;
+            animation: Open 2s forwards;
+
+            & svg {
+                position: relative;
+                margin-bottom: 30px;
+                .success_circle {
+                    fill: var(--white);
+                    stroke-width: 7px;
+                    stroke: var(--black);
+                    stroke-dasharray: 0 251.2;
+                    animation: successCircle 0.7s forwards;
+                }
+
+                & path {
+                    stroke: var(--blue);
+                    fill: none;
+                    stroke-dasharray: 120 200;
+                    stroke-dashoffset: 120;
+                    animation: successMark 1.2s forwards;
+                    animation-delay: 0.3s;
+                }
+            }
+            
+            & h4 {
+                color: var(--black);
+                @include adaptiveFont(30, 22);
+                font-weight: 500;
+                margin-bottom: 20px;
+            }
+
+            & p {
+                @include adaptiveFont(18, 16);
+                color: var(--grey);
+            }
+        }
+
+        .store_modal_content {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+        }
+
         .store_flex {
             display: flex;
             width: 100%;
             align-items: flex-end;
-            @include adaptiveProperty(margin-bottom, 100, 40);
-            @include adaptiveProperty(gap, 80, 30);
+            row-gap: 50px;
+            @include adaptiveProperty(margin-bottom, 70, 20);
+            @include adaptiveProperty(column-gap, 80, 40);
 
             @include mediaMaxWidth(1200) {
-                gap: 30px;
+                row-gap: 50px;
+                column-gap: 30px;
             }
 
             @include mediaMaxWidth(900) {
@@ -96,7 +152,7 @@
                             margin-bottom: 10px;
 
                             & h4 {
-                                @include adaptiveFont(20, 14);
+                                @include adaptiveFont(20, 12);
                                 font-weight: 400;
                                 color: var(--grey);
                                 @include adaptiveProperty(margin-bottom, 7, 4);
@@ -108,8 +164,11 @@
                                 font-weight: 500;
                                 display: flex;
                                 @include adaptiveProperty(gap, 12, 7);
-
                                 align-items: center;
+
+                                &.color_text {
+                                    text-transform: lowercase;
+                                }
 
                                 & span {
                                     display: block;
@@ -137,7 +196,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            @include adaptiveProperty(gap, 40, 15);
+            @include adaptiveProperty(gap, 40, 30);
         }
     }
 

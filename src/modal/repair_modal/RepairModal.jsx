@@ -39,7 +39,7 @@ export default function RepairModal ({services}) {
                         <p>Наш менеджер свяжется с вами в течении часа.</p>
                     </div>
                 :
-                    <div className={`repair_modal_content ${repair.success ? 'close' : ''}`}>
+                    <div className={`repair_modal_content`}>
                         <ModalTitle mode={'white center'}>Оставьте заявку и мы вам перезвоним!</ModalTitle>
 
                         <div className="repair_modal_body">
@@ -72,8 +72,6 @@ export default function RepairModal ({services}) {
                         <ModalFooter loading={repair.loading} callBack={repair.sendData} mode={'white'}/>
                     </div>
                 }
-                {/* <div className={`repair_modal_content ${repair.success ? 'close' : ''}`}>
-                </div> */}
 
             </div>
         </div>
