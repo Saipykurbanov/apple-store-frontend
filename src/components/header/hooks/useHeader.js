@@ -23,6 +23,7 @@ export default function useHeader () {
                 setOpen(false)
             } else if (window.scrollY <= 0) {
                 setOpen(true)
+                setLink('main')
             }
         } else if(window.scrollY <= 0) {
             isBlocked.current = false
