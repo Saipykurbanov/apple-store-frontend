@@ -4,17 +4,50 @@
     background-color: var(--background-grey);
 
     .store_list {
+        overflow: hidden;
         width: 100%;
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(570px, 1fr));
-        gap: 30px;
-        margin-top: 70px;
+        display: flex;
 
-        @include mediaMaxWidth(1500) {
-            grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
-        }
-        @include mediaMaxWidth(600) {
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        .pagination_page {
+            position: relative;
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(570px, 1fr));
+            gap: 30px;
+            margin-top: 70px;
+            flex-shrink: 0;
+            transform: translateX(0);
+            transition: transform 0.7s ease;
+            will-change: transform;
+            height: max-content;
+
+            @include mediaMaxWidth(1500) {
+                grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+            }
+            @include mediaMaxWidth(600) {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+
+            &.prev { 
+                .store_item {
+                    transition: opacity 0.2s;
+                    opacity: 0;
+                    transition-delay: 0 !important;
+                }
+            }
+            &.active {
+                .store_item {
+                    transition: opacity 1s;
+                    transition-delay: 0.2s;
+                    opacity: 1;
+                }
+            }
+            &.next {
+                .store_item {
+                    transition: opacity 0.2s;
+                    opacity: 0;
+                }
+            }
         }
 
         .store_item {
@@ -27,6 +60,7 @@
             background-color: var(--white);
             border-radius: 20px;
             @include adaptiveProperty(padding, 50, 20);
+            height: max-content;
             
             & .store_item_image {
                 width: 100%;
@@ -84,6 +118,7 @@
                             position: relative;
                             width: 40px;
                             height: 40px;
+                            flex-shrink: 0;
 
                             & img {
                                 position: absolute;
@@ -134,6 +169,60 @@
                         
                     }
                 }
+            }
+        }
+    }
+}
+
+.pagination {
+    position: sticky;
+    bottom: 30px;
+    margin-left: auto;
+    margin-top: 50px;
+    width: max-content;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    z-index: 90;
+
+    @include mediaMaxWidth(992) {
+        position: relative;
+        margin-right: auto;
+    }
+
+    .page_container {
+        width: 115px;
+        flex-shrink: 0;
+        overflow: hidden;
+        height: 50px;
+        border-radius: 30px;
+        backdrop-filter: blur(5px);
+        background: rgba(221, 221, 221, 0.59); 
+        box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.25);
+        
+        .track {
+            height: 100%;
+            width: max-content;
+            display: flex;
+            align-items: center;
+            padding: 0 7px;
+            transition: 0.5s;
+        }
+
+        & .pagination_page_item {
+            color: rgba(0, 0, 0, 0.5);
+            width: 35px;
+            text-align: center;
+            flex-shrink: 0;
+            font-size: 18px;
+            font-weight: 500;
+            transition: 0.3s;
+            will-change: font-size;
+
+            &.active {
+                font-size: 24px;
+                font-weight: 700;
+                color: var(--black);
             }
         }
     }
