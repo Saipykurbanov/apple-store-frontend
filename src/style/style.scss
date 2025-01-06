@@ -85,6 +85,19 @@ input:-webkit-autofill:focus {
 	@include adaptiveProperty(padding, 100, 15);
 }
 
+.no_products {
+    width: 100%;
+    min-height: 50dvh;
+    background-color: var(--background-grey);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--grey);
+    font-size: 20px;
+    font-weight: 500;
+}
+
 .loading{
     position: fixed;
     top: 0;

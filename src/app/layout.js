@@ -2,7 +2,6 @@ import { Montserrat } from "next/font/google";
 import './../style/style.scss';
 import Script from "next/script";
 
-
 const main = Montserrat({ 
   subsets: ["latin"],
   variable: '--main-font',
