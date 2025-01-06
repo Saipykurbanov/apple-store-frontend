@@ -1,4 +1,5 @@
 import Button from '../button/Button';
+import ScrollDown from '../scroll_down/ScrollDown';
 import './css/main.scss';
 
 export default function Main () {
@@ -25,12 +26,7 @@ export default function Main () {
 
                     <Button>Свяжитесь с нами</Button>
 
-                    <div className="scroll_down">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <img src="./icons/arrow_down.svg" alt="" />
-                    </div>
+                    <ScrollDown />
                 </div>
 
             </div>

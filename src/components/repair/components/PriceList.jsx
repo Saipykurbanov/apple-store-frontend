@@ -1,10 +1,11 @@
 'use client';
-import React, { useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import '@splidejs/react-splide/css';
 import { Splide, SplideSlide, SplideTrack } from '@splidejs/react-splide';
 import Button from '@/components/button/Button';
 import Store from '@/utils/Store';
 import Api from '@/utils/Api';
+import useEnter from '@/hooks/useEnter';
 
 const PriceList = ({services}) => {
 
@@ -27,8 +28,10 @@ const PriceList = ({services}) => {
         Store.setListener('open_repair_modal', el)
     }
 
+    const [blockRef] = useEnter('repair')
+
     return (
-        <div className='price_list'>
+        <div className='price_list' ref={blockRef}>
             <h3>Прайс лист</h3>
 
             <Splide
