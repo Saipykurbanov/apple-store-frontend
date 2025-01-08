@@ -13,10 +13,11 @@ export default function StoreList ({list, course}) {
 
     return (
         <>
-            {list?.length ? 
+            {storeList.newList?.length ? 
             <>
                 <div className="store_list" ref={blockRef}>
                     <div 
+                        ref={storeList.storeRef}
                         className="store_track" 
                         style={{transform: `translateX(-${storeList.scroll}px)`}}
                     >
@@ -33,16 +34,20 @@ export default function StoreList ({list, course}) {
                         ))}
                     </div>
                 </div>
-
-                <Pagination 
-                    scroll={storeList.paginationScroll} 
-                    track={storeList.track} 
-                    container={storeList.container} 
-                    pageNum={storeList.pageNum}
-                    nextPage={storeList.nextPage} 
-                    prevPage={storeList.prevPage} 
-                    maxPage={storeList.newList?.length}
-                />
+                
+                {storeList.newList?.length <= 1 ? 
+                  <></>  
+                :
+                    <Pagination 
+                        scroll={storeList.paginationScroll} 
+                        track={storeList.track} 
+                        container={storeList.container} 
+                        pageNum={storeList.pageNum}
+                        nextPage={storeList.nextPage} 
+                        prevPage={storeList.prevPage} 
+                        maxPage={storeList.newList?.length}
+                    /> 
+                }
             </>
             :<div className="no_products" ref={blockRef}>Товаров нет.</div>}
         </>

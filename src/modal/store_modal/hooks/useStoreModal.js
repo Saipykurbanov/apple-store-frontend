@@ -98,9 +98,8 @@ export default function useStoreModal (course) {
 
         const res = await Api.post(`api/orders/create`, input)
 
-        setSuccess(true)
         if(res !== 'error') {
-
+            setSuccess(true)
         }
 
         setLoading(false)
