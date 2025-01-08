@@ -4,7 +4,7 @@ import Api from "@/utils/Api"
 import Store from "@/utils/Store"
 import { useEffect, useRef, useState } from "react"
 
-export default function useStoreModal () {
+export default function useStoreModal (course) {
     const [isOpen, setIsOpen] = useState(false)
     const [loading, setLoading] = useState(false)
     const [success, setSuccess] = useState(false)
@@ -34,7 +34,7 @@ export default function useStoreModal () {
             productid: data.productid,
             image: data.main_image,
             memory: data.memory,
-            price: data.price,
+            price: data.price * course,
             color: data.color,
             colorname: data.colorname,
         }))

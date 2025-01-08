@@ -6,7 +6,14 @@
     .store_list {
         overflow: hidden;
         width: 100%;
-        display: flex;
+        
+        .store_track {
+            position: relative;
+            display: flex;
+            transition: transform 0.7s ease;
+            height: max-content;
+            gap: 30px;
+        }
 
         .pagination_page {
             position: relative;
@@ -16,36 +23,34 @@
             gap: 30px;
             margin-top: 70px;
             flex-shrink: 0;
-            transform: translateX(0);
-            transition: transform 0.7s ease;
-            will-change: transform;
-            height: max-content;
 
-            @include mediaMaxWidth(1500) {
-                grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+            @include mediaMaxWidth(1319) {
+                grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
             }
             @include mediaMaxWidth(600) {
                 grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             }
 
-            &.prev { 
-                .store_item {
-                    transition: opacity 0.2s;
-                    opacity: 0;
-                    transition-delay: 0 !important;
+            @include mediaMinWidth(991) {
+                &.prev { 
+                    .store_item {
+                        transition: opacity 0.2s;
+                        opacity: 0;
+                        transition-delay: 0 !important;
+                    }
                 }
-            }
-            &.active {
-                .store_item {
-                    transition: opacity 1s;
-                    transition-delay: 0.2s;
-                    opacity: 1;
+                &.active {
+                    .store_item {
+                        transition: opacity 1s;
+                        transition-delay: 0.2s;
+                        opacity: 1;
+                    }
                 }
-            }
-            &.next {
-                .store_item {
-                    transition: opacity 0.2s;
-                    opacity: 0;
+                &.next {
+                    .store_item {
+                        transition: opacity 0.2s;
+                        opacity: 0;
+                    }
                 }
             }
         }
@@ -56,16 +61,33 @@
             justify-content: center;
             flex-wrap: wrap;
             align-items: center;
-            gap: 45px;
+            gap: 15px;
             background-color: var(--white);
             border-radius: 20px;
-            @include adaptiveProperty(padding, 50, 20);
+            @include adaptiveProperty(padding, 45, 20);
             height: max-content;
             
             & .store_item_image {
+                position: relative;
                 width: 100%;
+                flex: 1;
                 max-width: 250px;
-                min-width: 250px;
+                min-width: 200px;
+
+                @include mediaMaxWidth(1319) {
+                    max-width: 200px;
+                    min-width: 200px;
+                }
+
+                & img {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    object-fit: contain;
+                    object-position: center;
+                }
 
                 @include mediaMaxWidth(600) {
                     min-width: 200px;
@@ -73,10 +95,15 @@
                 }
             }
             
-            .store_item_content {
+            .store_item_content_wrapper {
                 min-width: 282px;
-                flex: 2;
+                flex: 1;
+                align-self: stretch;
+            }
+            .store_item_content {
+                height: 90%;
                 display: flex;
+                justify-content: space-between;
                 flex-direction: column;
 
                 @include mediaMaxWidth(500) {
@@ -105,9 +132,13 @@
                 .option_list {
                     width: 100%;
                     display: grid;
-                    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-                    gap: 20px 15px;
-                    margin-top: 34px;
+                    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+                    gap: 5px 5px;
+                    margin-top: 12px;
+
+                    @include mediaMaxWidth(1319) {
+                        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                    }
 
                     .item_option {
                         display: flex;
@@ -116,8 +147,8 @@
 
                         .icon_container {
                             position: relative;
-                            width: 40px;
-                            height: 40px;
+                            @include adaptiveProperty(width, 35, 30);
+                            @include adaptiveProperty(height, 35, 30);
                             flex-shrink: 0;
 
                             & img {
@@ -132,7 +163,7 @@
                         }
 
                         .description {
-                            font-size: 14px;
+                            font-size: 13px;
                             color: var(--grey);
                         }
                     }
@@ -140,8 +171,8 @@
 
                 .colors_flex {
                     margin-left: 4px;
-                    margin-top: 30px;
-                    margin-bottom: 40px;
+                    margin-top: 10px;
+                    margin-bottom: 10px;
                     display: flex;
                     align-items: center;
                     gap: 10px;

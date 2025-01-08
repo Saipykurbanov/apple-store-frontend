@@ -1,21 +1,51 @@
 import Store from "@/utils/Store";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
-export default function useStoreList (list) {
+export default function useStoreList (list, blockRef) {
     const [pageNum, setPageNum] = useState(0)
     const [paginationScroll, setPaginationScroll] = useState(0)
+    const [newList, setNewList] = useState([])
+    const [scroll, setScroll] = useState(0)
     const container = useRef(null)
     const track = useRef(null)
+    const storeRef = useRef(null)
 
-    function splitIntoChunks(array, size) {
-        const result = [];
-        for (let i = 0; i < array.length; i += size) {
-            result.push(array.slice(i, i + size));
+    
+
+    useEffect(() => {
+        const handleTouchMove = (e) => {
+            const touch = e.touches[0]; 
+            const deltaX = touch.clientX - (blockRef.current.startX || touch.clientX);
+            blockRef.current.startX = touch.clientX;
+        
+            setScroll((prev) => prev - deltaX);
+        };
+    
+        const handleTouchStart = (e) => {
+            blockRef.current.startX = e.touches[0].clientX;
+        };
+
+        const container = blockRef.current;
+        container.addEventListener("touchstart", handleTouchStart);
+        container.addEventListener("touchmove", handleTouchMove);
+
+        return () => {
+            container.removeEventListener("touchstart", handleTouchStart);
+            container.removeEventListener("touchmove", handleTouchMove);
+        };
+    }, [])
+
+    useEffect(() => {
+        if(window.innerWidth > 992) {
+            setNewList(splitIntoChunks(list, 4))
+        } else if(window.innerWidth > 768) {
+            setNewList(splitIntoChunks(list, 2))
+        } else {
+            setNewList(splitIntoChunks(list, 1))
         }
-        return result;
-    }
 
-    const newList = splitIntoChunks(list, 4) 
+    }, [])
+
 
     const nextPage = () => {
         setPageNum(prev => {
@@ -25,6 +55,8 @@ export default function useStoreList (list) {
                 const num = prev + 1
                 const containerWidth = container.current.offsetWidth
                 const trackWidth = track.current.offsetWidth
+
+                setScroll(prev => prev + (blockRef.current.offsetWidth + 30))
 
                 if(trackWidth > containerWidth) {
                     let distance = elementDistance(num)
@@ -45,11 +77,14 @@ export default function useStoreList (list) {
     const prevPage = () => {
         setPageNum(prev =>{
             if(prev <= 0) {
+                setScroll(0)
                 return prev
             } else {
                 const num = prev - 1
                 const containerWidth = container.current.offsetWidth
                 const trackWidth = track.current.offsetWidth
+
+                setScroll(prev => prev -(blockRef.current.offsetWidth + 30))
 
                 if(trackWidth > containerWidth) {
                     let distance = elementDistance(num)
@@ -76,12 +111,22 @@ export default function useStoreList (list) {
         return (allSlides[num].offsetLeft + (allSlides[num].offsetWidth / 2)) - paginationScroll
     }
 
+    function splitIntoChunks(array, size) {
+        const result = [];
+        for (let i = 0; i < array.length; i += size) {
+            result.push(array.slice(i, i + size));
+        }
+        return result;
+    }
+
     return {
         container,
         track,
         newList,
         pageNum,
         paginationScroll,
+        storeRef,
+        scroll,
         openModal,
         prevPage,
         nextPage,

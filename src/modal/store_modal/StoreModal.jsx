@@ -11,7 +11,7 @@ import Phone from "@/utils/Phone";
 
 export default function StoreModal ({course}) {
 
-    const store = useStoreModal()
+    const store = useStoreModal(course)
 
     return (
         <div className={`store_modal_wrapper ${store.isOpen ? 'open' : ''}`} onMouseDown={store.closeModal}>
