@@ -1,8 +1,8 @@
 import React from 'react';
-import './css/repair.scss';
 import Title from '../title/Title';
 import PriceList from './components/PriceList';
 import Advantages from './components/Advantages';
+import './css/repair.scss';
 
 export default function Repair ({services}) {
     return (
