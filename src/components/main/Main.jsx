@@ -1,7 +1,7 @@
-import Button from '../button/Button';
-import ScrollDown from '../scroll_down/ScrollDown';
+import ScrollDown from './components/ScrollDown';
 import ContactUs from './components/ContactUs';
 import './css/main.scss';
+import MainTitle from './components/MainTitle';
 
 export default function Main () {
 
@@ -11,11 +11,7 @@ export default function Main () {
                 <div className="logo"><span></span>iFix<span> Store.</span></div>
 
                 <div className="description">
-                    <h1>
-                        Сервис-маркет <br></br>
-                         техники в <br></br> 
-                        г. Симферополь.
-                    </h1>
+                   <MainTitle />
 
                     <p className='description_item'>Ремонт любой техники — от смартфонов до бытовой электроники.</p>
                     <p className='description_item'>Мы также специализируемся на продаже мобильных телефонов Apple, предлагая актуальные модели по выгодным ценам.</p>
@@ -25,8 +21,8 @@ export default function Main () {
                         <p>Респ. Крым, г. Симферополь, ул. Козлова 45а</p>
                     </div>
 
-                    {/* <Button>Свяжитесь с нами</Button> */}
                     <ContactUs />
+                    
                     <ScrollDown />
                 </div>
 

@@ -1,11 +1,11 @@
 'use client';
-import React, { useEffect, useRef, useState } from 'react';
-import '@splidejs/react-splide/css';
-import { Splide, SplideSlide, SplideTrack } from '@splidejs/react-splide';
+import React, { useRef } from 'react';
+import { Splide, SplideSlide } from '@splidejs/react-splide';
 import Button from '@/components/button/Button';
 import Store from '@/utils/Store';
 import Api from '@/utils/Api';
 import useEnter from '@/hooks/useEnter';
+import '@splidejs/react-splide/css';
 
 const PriceList = ({services}) => {
 

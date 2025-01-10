@@ -1,5 +1,5 @@
 import Store from "@/utils/Store";
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 
 export default function useEnter (key) {
     const blockRef = useRef(null); 

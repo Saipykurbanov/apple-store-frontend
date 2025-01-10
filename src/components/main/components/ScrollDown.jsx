@@ -1,12 +1,7 @@
-'use client'
-
-import useEnter from "@/hooks/useEnter"
-
 export default function ScrollDown () {
-    const [blockRef] = useEnter('main')
 
     return (
-        <div className="scroll_down" ref={blockRef}>
+        <div className="scroll_down">
             <span></span>
             <span></span>
             <span></span>

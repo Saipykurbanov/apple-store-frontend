@@ -5,7 +5,6 @@ import Item from './Item';
 import Store from '@/utils/Store';
 import './css/notification.scss';
 
-
 const Notification = () => {
 
     const [notifications, setNotifications] = useState([])
