@@ -19,10 +19,7 @@ export default function useStoreList (list, blockRef) {
         } else {
             setNewList(splitIntoChunks(list, 1))
         }
-
     }, [])
-
-    Store.useListener('search_loading', setLoading)
 
     Store.useListener('search', (data) => {
         if(window.innerWidth > 992) {
@@ -32,6 +29,9 @@ export default function useStoreList (list, blockRef) {
         } else {
             setNewList(splitIntoChunks(data, 1))
         }
+
+        setScroll(0)
+        setPageNum(0)
     })
     
     useEffect(() => {
