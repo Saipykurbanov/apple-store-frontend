@@ -2,20 +2,17 @@
 
 import StoreItem from "./StoreItem";
 import Pagination from "./Pagination";
-import useEnter from "@/hooks/useEnter";
 import useStoreList from "../hooks/useStoreList";
 
 export default function StoreList ({list, course}) {
     
-    const [blockRef] = useEnter('store')
-    
-    const storeList = useStoreList(list, blockRef)
+    const storeList = useStoreList(list, 'store')
 
     return (
         <>
             {storeList.newList?.length ? 
             <>
-                <div className="store_list" ref={blockRef}>
+                <div className="store_list" ref={storeList.blockRef}>
                     <div 
                         ref={storeList.storeRef}
                         className="store_track" 
@@ -49,7 +46,7 @@ export default function StoreList ({list, course}) {
                     /> 
                 }
             </>
-            :<div className="no_products" ref={blockRef}>Товаров нет.</div>}
+            :<div className="no_products" ref={storeList.blockRef}>Товаров нет.</div>}
         </>
     )
 }

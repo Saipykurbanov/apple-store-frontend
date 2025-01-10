@@ -4,12 +4,13 @@ export default function Footer() {
 
     return (
         <footer>
-            <img src="/icons/logo.svg" alt="" className="logo" />
+            <div className="logo"><span></span>iFix<span> Store.</span></div>
+            {/* <img src="/icons/logo.svg" alt="" className="logo" /> */}
 
             <nav>
-                <a href="">главная</a>
-                <a href="">магазин</a>
-                <a href="">ремонт</a>
+                <a href="#main">главная</a>
+                <a href="#store">магазин</a>
+                <a href="#repair">ремонт</a>
             </nav>
 
             <p className="copyright">Copyright © 2024</p>

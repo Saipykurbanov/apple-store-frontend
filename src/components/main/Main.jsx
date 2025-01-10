@@ -1,5 +1,6 @@
 import Button from '../button/Button';
 import ScrollDown from '../scroll_down/ScrollDown';
+import ContactUs from './components/ContactUs';
 import './css/main.scss';
 
 export default function Main () {
@@ -24,8 +25,8 @@ export default function Main () {
                         <p>Респ. Крым, г. Симферополь, ул. Козлова 45а</p>
                     </div>
 
-                    <Button>Свяжитесь с нами</Button>
-
+                    {/* <Button>Свяжитесь с нами</Button> */}
+                    <ContactUs />
                     <ScrollDown />
                 </div>
 

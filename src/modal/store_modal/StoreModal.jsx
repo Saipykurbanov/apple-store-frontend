@@ -94,7 +94,7 @@ export default function StoreModal ({course}) {
                                     </div>
                                     <div className="character_item">
                                         <h4>цена:</h4>
-                                        <p>{((store.input.price * course) / 100).toFixed(2)} руб.</p>
+                                        <p>{(store.input.price / 100).toFixed(2)} руб.</p>
                                     </div>
                                 </div>
                             </div>

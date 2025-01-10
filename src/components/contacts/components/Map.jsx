@@ -32,7 +32,7 @@ export default function Map () {
 
             <YMapMarker coordinates={[34.099222, 44.937404]}>
               <div className="custom_marker">
-                <div className="marker_label">iFIx <span>Store.</span> </div>
+                <div className="marker_label">iFix <span>Store.</span> </div>
               </div>
             </YMapMarker>
         </YMap>

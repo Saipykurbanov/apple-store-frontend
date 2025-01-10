@@ -1,7 +1,8 @@
 import Store from "@/utils/Store";
 import { useEffect, useRef, useState } from "react";
 
-export default function useStoreList (list, blockRef) {
+export default function useStoreList (list, key) {
+    const [blockName, setBlockName] = useState('')
     const [pageNum, setPageNum] = useState(0)
     const [loading, setLoading] = useState(false)
     const [paginationScroll, setPaginationScroll] = useState(0)
@@ -10,16 +11,51 @@ export default function useStoreList (list, blockRef) {
     const container = useRef(null)
     const track = useRef(null)
     const storeRef = useRef(null)
+    const blockRef = useRef(null)
 
     useEffect(() => {
-        if(window.innerWidth > 992) {
-            setNewList(splitIntoChunks(list, 4))
-        } else if(window.innerWidth > 768) {
-            setNewList(splitIntoChunks(list, 2))
-        } else {
-            setNewList(splitIntoChunks(list, 1))
+        const calculateChunks = () => {
+            if (window.innerWidth > 992) {
+                return splitIntoChunks(list, 4);
+            } else if (window.innerWidth > 768) {
+                return splitIntoChunks(list, 2);
+            } else {
+                return splitIntoChunks(list, 1);
+            }
+        };
+
+        setNewList(calculateChunks());
+    }, [list])
+
+    Store.useListener(`link_block${key}`, (data) => {
+        setBlockName(data)
+    })
+
+    const handleIntersect = ([entry]) => {
+        if (entry.isIntersecting) {
+            Store.setListener('change_link', key);
+            if (blockName === key) {
+                Store.setListener('link_block', false);
+            }
         }
-    }, [])
+    };
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(handleIntersect, {
+            root: null,
+            threshold: 0.5,
+        });
+
+        if (blockRef.current) {
+            observer.observe(blockRef.current);
+        }
+
+        return () => {
+            if (blockRef.current) {
+                observer.unobserve(blockRef.current);
+            }
+        };
+    }, [blockName, newList]);
 
     Store.useListener('search', (data) => {
         if(window.innerWidth > 992) {
@@ -160,6 +196,8 @@ export default function useStoreList (list, blockRef) {
     }
 
     function splitIntoChunks(array, size) {
+        if (!Array.isArray(array) || array.length === 0) return []
+
         const result = [];
         for (let i = 0; i < array.length; i += size) {
             result.push(array.slice(i, i + size));
@@ -168,6 +206,7 @@ export default function useStoreList (list, blockRef) {
     }
 
     return {
+        blockRef,
         loading,
         container,
         track,

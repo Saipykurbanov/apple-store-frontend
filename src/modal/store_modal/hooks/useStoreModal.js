@@ -98,12 +98,13 @@ export default function useStoreModal (course) {
 
         const res = await Api.post(`api/orders/create`, input)
 
-        if(res !== 'error') {
-            setSuccess(true)
-        }
-
         setLoading(false)
 
+        if(res !== 'error') {
+            setSuccess(true)
+        } else {
+            Store.setListener('notice', {type: 'error', text: 'Ошибка сервера, попробуйте позже'})
+        }
     }
 
     useEffect(() => {
