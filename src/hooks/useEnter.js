@@ -1,5 +1,5 @@
 import Store from "@/utils/Store";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 
 export default function useEnter (key) {
     const blockRef = useRef(null); 
@@ -9,7 +9,7 @@ export default function useEnter (key) {
         setBlockName(data)
     })
         
-    useEffect(() => {
+    useLayoutEffect(() => {
         
         const handleIntersect = ([entry]) => {
             if (entry.isIntersecting) {

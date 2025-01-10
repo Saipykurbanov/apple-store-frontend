@@ -2,11 +2,11 @@
 import ModalTitle from '@/components/modal_title/ModalTitle';
 import ModalFooter from '@/components/modal_footer/ModalFooter';
 import ModalInput from '@/components/modal_input/ModalInput';
-import './css/repair_modal.scss';
 import RepairInput from './components/RepairInput';
 import ModalCloseBtn from '@/components/modal_close_btn/ModalCloseBtn';
 import useRepairModal from './hooks/useRepairModal';
 import Phone from '@/utils/Phone';
+import './css/repair_modal.scss';
 
 export default function RepairModal ({services}) {
 

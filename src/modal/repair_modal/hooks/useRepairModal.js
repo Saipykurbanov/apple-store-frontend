@@ -87,8 +87,11 @@ export default function useRepairModal (services) {
         const res = await Api.post(`api/orders/services/create`, body)
 
         setLoading(false)
-        setSuccess(true)
+
         if(res !== 'error') {
+            setSuccess(true)
+        } else {
+            Store.setListener('notice', {type: 'error', text: 'Ошибка сервера, попробуйте позже'})
         }
     }
 

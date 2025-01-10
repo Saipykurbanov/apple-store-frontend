@@ -4,7 +4,7 @@ import Api from "@/utils/Api"
 import Store from "@/utils/Store"
 import { useEffect, useRef, useState } from "react"
 
-export default function useStoreModal () {
+export default function useStoreModal (course) {
     const [isOpen, setIsOpen] = useState(false)
     const [loading, setLoading] = useState(false)
     const [success, setSuccess] = useState(false)
@@ -34,7 +34,7 @@ export default function useStoreModal () {
             productid: data.productid,
             image: data.main_image,
             memory: data.memory,
-            price: data.price,
+            price: data.price * course,
             color: data.color,
             colorname: data.colorname,
         }))
@@ -98,13 +98,13 @@ export default function useStoreModal () {
 
         const res = await Api.post(`api/orders/create`, input)
 
-        setSuccess(true)
-        if(res !== 'error') {
-
-        }
-
         setLoading(false)
 
+        if(res !== 'error') {
+            setSuccess(true)
+        } else {
+            Store.setListener('notice', {type: 'error', text: 'Ошибка сервера, попробуйте позже'})
+        }
     }
 
     useEffect(() => {

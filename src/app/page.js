@@ -3,6 +3,7 @@ import Footer from "@/components/footer/Footer";
 import Header from "@/components/header/Header";
 import Loading from "@/components/loading/Loading";
 import Main from "@/components/main/Main";
+import Notification from "@/components/notification/Notification";
 import Repair from "@/components/repair/Repair";
 import SocialWidget from "@/components/social_widget/SocialWidget";
 import Store from "@/components/store/Store";
@@ -37,6 +38,8 @@ export default async function Home() {
       <RepairModal services={services}/>
 
       <StoreModal course={course}/>
+
+      <Notification />
 
       <Loading />
     </>
