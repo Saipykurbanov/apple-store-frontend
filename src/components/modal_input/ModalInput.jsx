@@ -13,6 +13,7 @@ export default function ModalInput ({mode, label, value, callback, onPaste, onKe
                 onChange={callback}
                 onPaste={onPaste}
                 onKeyDown={onKeyDown}
+                maxlength="50"
             />
 
             {error ? <div className="error_message">{error}</div> : <></>}
