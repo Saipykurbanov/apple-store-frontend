@@ -16,18 +16,25 @@
     transition: 0.7s ease;
     transform: translateY(100%);
     will-change: transform;
-    @include adaptiveProperty(padding-top, 100, 30);
+    // @include adaptiveProperty(padding-top, 100, 30);
+
+    &.open {
+        transform: translateY(0%);
+        background: rgba(145, 145, 145, 0.588);
+        backdrop-filter: blur(10px);
+    }
 
     .store_modal {
         margin: auto auto 0 auto;
         position: relative;
         width: 90%;
-        min-height: 100%;
+        // min-height: 100%;
         background-color: var(--white);
         border-radius: 30px 30px 0 0;
         @include adaptiveProperty(padding, 60, 50);
         @include adaptiveProperty(padding-left, 60, 20);
         @include adaptiveProperty(padding-right, 60, 20);
+        @include adaptiveProperty(padding-bottom, 40, 20);
         display: flex;
         align-items: center;
         justify-content: center;
@@ -41,9 +48,14 @@
             width: 100%;
             text-align: center;
             max-width: 560px;
+            height: 80dvh;
             opacity: 0;
             justify-self: center;
             animation: Open 2s forwards;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
 
             & svg {
                 position: relative;
@@ -109,6 +121,31 @@
                 flex: 1;
                 width: 100%;
 
+                .modal_title {
+
+                    .delivery { 
+                        margin-top: 12px;
+                        display: flex;
+                        align-items: center;
+                        gap: 7px;
+                        font-size: 14px;
+                        color: var(--blue);
+                        cursor: pointer;
+
+                        & div {
+                            font-size: 12px;
+                            min-height: 15px;
+                            width: 15px;
+                            border-radius: 50%;
+                            background-color: var(--blue);
+                            color: var(--white);
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                        }
+                    }
+                }
+
                 &.preview {
                     display: grid;
                     grid-template-columns: 1fr 1fr;
@@ -132,10 +169,15 @@
                         & img {
                             height: auto;
                             width: 100%;
+        
                         }
 
                         @include mediaMaxWidth(900) {
-                            max-width: 300px;
+                            max-width: 270px;
+                            min-width: 0;
+                        }
+                        @include mediaMaxWidth(700) {
+                            max-width: 250px;
                             min-width: 0;
                         }
                     }
@@ -199,11 +241,7 @@
         }
     }
 
-    &.open {
-        transform: translateY(0%);
-        background: rgba(145, 145, 145, 0.588);
-        backdrop-filter: blur(10px);
-    }
+    
 
     // &.close {
     //     animation: CloseModalWrapper 0.7s forwards;

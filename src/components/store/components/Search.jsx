@@ -5,22 +5,26 @@ import Store from "@/utils/Store";
 import { useRef, useState } from "react";
 
 export default function Search ({list}) {
-    const [value, setValue] = useState('')
+    const [searchValue, setSearchValue] = useState('')
     const [isOpen, setIsOpen] = useState(false)
-    const inputRef = useRef(null)
+    const inputsRef = useRef(null)
 
-    const inputValue = (value) => {
+    const searching = (e, value) => {
+        e.stopPropagation()
+        
         const normalizedValue = value.replace(/\s+/g, '').toLowerCase(); 
     
         let filteredList = structuredClone(list);
-    
+        
+        console.log('huynya')
+
         filteredList = filteredList.filter(el => 
             el.title.replace(/\s+/g, '').toLowerCase().includes(normalizedValue)
         );
     
         Store.setListener('search', filteredList);
     
-        setValue(value);
+        setSearchValue(value);
     };
 
     const openSearch = () => {
@@ -28,7 +32,7 @@ export default function Search ({list}) {
             const open =  prev ? false : true
 
             if(open) {
-                inputRef.current?.focus();
+                inputsRef.current?.focus();
             }
             
             return open
@@ -39,7 +43,7 @@ export default function Search ({list}) {
         <div className="search_wrapper">
             <div className={`search_container ${isOpen ? 'open' : ''}`}>
                 <div className="search">
-                    <input ref={inputRef} type="text" value={value} onChange={(e) => inputValue(e.target.value)} maxlength="50"/>  
+                    <input ref={inputsRef} type="text" value={searchValue} onInput={(e) => searching(e, e.target.value)} maxlength="50"/>  
                 </div>
 
                 <Button mode={`round black`} callback={openSearch}>

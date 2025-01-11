@@ -22,4 +22,8 @@
     &.flex_left {
         align-self: flex-start;
     }
+
+    &.full {
+        max-width: unset;
+    }
 }

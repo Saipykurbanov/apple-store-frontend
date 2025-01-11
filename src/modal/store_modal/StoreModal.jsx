@@ -5,9 +5,9 @@ import ModalInput from "@/components/modal_input/ModalInput";
 import ModalFooter from "@/components/modal_footer/ModalFooter";
 import ModalCloseBtn from "@/components/modal_close_btn/ModalCloseBtn";
 import useStoreModal from "./hooks/useStoreModal";
-import './css/store_modal.scss';
 import Api from "@/utils/Api";
 import Phone from "@/utils/Phone";
+import './css/store_modal.scss';
 
 export default function StoreModal ({course}) {
 
@@ -43,8 +43,15 @@ export default function StoreModal ({course}) {
                     <div className="store_modal_content">
                         <div className="store_flex">
                             <div className="store_flex_item left">
-                                <ModalTitle mode={'black'}>Оставьте заявку и мы вам перезвоним!</ModalTitle>
-                                
+                                <ModalTitle mode={'black'}>
+                                    Оставьте заявку и мы вам перезвоним! 
+
+                                    <div className="delivery">
+                                        Условия доставки
+                                        <div className="info">i</div>
+                                    </div>
+                                </ModalTitle>
+
                                 <div className="store_modal_body">
                                     <ModalInput 
                                         label={'Ваше имя'}

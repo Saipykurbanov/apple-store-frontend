@@ -7,6 +7,7 @@ import Notification from "@/components/notification/Notification";
 import Repair from "@/components/repair/Repair";
 import SocialWidget from "@/components/social_widget/SocialWidget";
 import Store from "@/components/store/Store";
+import Policy from "@/modal/policy/Policy";
 import RepairModal from "@/modal/repair_modal/RepairModal";
 import StoreModal from "@/modal/store_modal/StoreModal";
 import Api from "@/utils/Api";
@@ -38,6 +39,8 @@ export default async function Home() {
       <RepairModal services={services}/>
 
       <StoreModal course={course}/>
+
+      <Policy />
 
       <Notification />
 

@@ -6,6 +6,12 @@ export default function ModalFooter ({mode, callBack, loading}) {
 
     return (
         <div className={`modal_footer ${mode}`}>
+            <div className="policy_agreement">
+                <div className="mark"></div>
+
+                <span className="text">Я подтверждаю, что ознакомлен(а) с <span>Пользовательским соглашением</span> и <span>Политикой конфиденциальности</span>, а также даю согласие на обработку моих персональных данных.</span>
+            </div>
+
             <Button callback={callBack}>
                 {loading ? 'Отправка...' : 'Оставить заявку'}
             </Button>
