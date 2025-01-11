@@ -34,12 +34,17 @@
         @include adaptiveProperty(padding-left, 60, 20);
         @include adaptiveProperty(padding-right, 60, 20);
 
+        @include mediaMaxWidth(768) {
+            width: 100%;
+        }
+
         .tabs {
             width: 100%;
             display: flex;
             align-items: center;
             overflow: auto;
             @include adaptiveProperty(gap, 20, 10);
+            margin-bottom: 30px;
 
             &::-webkit-scrollbar {
                 height: 0;
@@ -71,10 +76,45 @@
         }
         .tabs_content {
             width: 100%;
+            padding-left: 5px;
 
             .tab_text {
                 opacity: 0;
                 animation: Open 0.8s forwards ease;
+
+                & h4 {
+                    font-size: 18px;
+                    font-weight: 600 !important; 
+                    margin-bottom: 8px;
+                    margin-top: 20px;
+                }
+
+                & p {
+                    margin-bottom: 8px;
+                }
+
+                & ul {
+                    padding-left: 10px; 
+                    
+                    & li {
+                        margin-bottom: 5px;
+                        list-style-type: none !important; 
+
+                        &::before {
+                            content: "";
+                            display: inline-block;
+                            width: 7px; 
+                            height: 7px; 
+                            margin-right: 10px; 
+                            background-color: var(--blue); 
+                            border-radius: 50%; 
+                        }
+                    }
+                }
+
+                & a {
+                    color: var(--blue);
+                }
             }
         }
     }

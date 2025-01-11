@@ -8,6 +8,7 @@ export default function useRepairModal (services) {
     const [isOpen, setIsOpen] = useState(false)
     const [loading, setLoading] = useState(false)
     const [success, setSuccess] = useState(false)
+    const [policy, setPolicy] = useState(false)
     const [price, setPrice] = useState(0)
     const [input, setInput] = useState({
         name: '',
@@ -17,6 +18,7 @@ export default function useRepairModal (services) {
     const [error, setError] = useState({
         name: false,
         phone: false,
+        policy: false,
     })
     const timer = useRef(null)
 
@@ -42,6 +44,7 @@ export default function useRepairModal (services) {
     }
 
     const closeModal = (e, key) => {
+        // e.preventDefault()
         if(e.target === e.currentTarget || key) {
             document.body.style.overflow = 'visible'
             setIsOpen(false)
@@ -54,15 +57,24 @@ export default function useRepairModal (services) {
                 setError({
                     name: false,
                     phone: false,
+                    policy: false,
                 })
                 setSuccess(false)
                 setPrice(0)
+                setPolicy(false)
             }, 700)
         }
     }
 
     const sendData = async (e) => {
+        e.preventDefault()
         let err = false
+
+        if(!policy) {
+            setError(prev => ({...prev, policy: 'Обязательное поле'}))
+            err = true
+        }
+        
         if(input.name === '') {
             setError(prev => ({...prev, name: 'Обязательное поле'}))
             err = true
@@ -95,6 +107,15 @@ export default function useRepairModal (services) {
         }
     }
 
+    const openPolicy = (name) => {
+        Store.setListener('open_policy', [name, true])
+    }
+
+    const checkPolicy = () => {
+        setError(prev => ({...prev, policy: false}))
+        setPolicy(prev => prev ? false : true)
+    }
+
     useEffect(() => {
         return () => {
             if(timer.current) {
@@ -104,6 +125,7 @@ export default function useRepairModal (services) {
     }, [])
 
     return {
+        policy,
         isOpen,
         input,
         success,
@@ -114,6 +136,8 @@ export default function useRepairModal (services) {
         closeModal,
         changeInput,
         changeService,
-        sendData
+        sendData,
+        openPolicy,
+        checkPolicy,
     }
 }

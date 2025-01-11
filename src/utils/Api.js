@@ -36,7 +36,7 @@ Api.post = async (path, body) => {
 
         res = await res.json()
         
-        if(res.status) {
+        if(res.status || res.success) {
             return res.data
         } else {
             return 'error'

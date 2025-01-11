@@ -2,14 +2,15 @@
 import Button from '../button/Button';
 import './css/modal_footer.scss';
 
-export default function ModalFooter ({mode, callBack, loading}) {
+export default function ModalFooter ({mode, callBack, loading, openPolicy, checkPolicy, policy, error}) {
 
     return (
         <div className={`modal_footer ${mode}`}>
             <div className="policy_agreement">
-                <div className="mark"></div>
+                <div className={`mark ${policy ? 'checked' : ''} ${error ? 'error' : ''}`} onMouseDown={() => checkPolicy()}></div>
 
-                <span className="text">Я подтверждаю, что ознакомлен(а) с <span>Пользовательским соглашением</span> и <span>Политикой конфиденциальности</span>, а также даю согласие на обработку моих персональных данных.</span>
+                <span className="text">Я подтверждаю, что ознакомлен(а) с <span onMouseDown={() => openPolicy('user')}>Пользовательским соглашением</span> и <span onMouseDown={() => openPolicy('policy')}>Политикой конфиденциальности</span>, а также даю согласие на обработку моих персональных данных.</span>
+                {error ? <div className="error_message">{error}</div> : <></>}
             </div>
 
             <Button callback={callBack}>

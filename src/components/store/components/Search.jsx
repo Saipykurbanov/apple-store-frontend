@@ -15,8 +15,6 @@ export default function Search ({list}) {
         const normalizedValue = value.replace(/\s+/g, '').toLowerCase(); 
     
         let filteredList = structuredClone(list);
-        
-        console.log('huynya')
 
         filteredList = filteredList.filter(el => 
             el.title.replace(/\s+/g, '').toLowerCase().includes(normalizedValue)
@@ -42,9 +40,9 @@ export default function Search ({list}) {
     return (
         <div className="search_wrapper">
             <div className={`search_container ${isOpen ? 'open' : ''}`}>
-                <div className="search">
-                    <input ref={inputsRef} type="text" value={searchValue} onInput={(e) => searching(e, e.target.value)} maxlength="50"/>  
-                </div>
+                <form autoCorrect="off" className="search">
+                    <input ref={inputsRef} type="text" value={searchValue} onInput={(e) => searching(e, e.target.value)} maxlength="50" autoComplete="off"/>  
+                </form>
 
                 <Button mode={`round black`} callback={openSearch}>
                     <svg width="18.127686" height="20.507568" viewBox="0 0 18.1277 20.5076" fill="none">

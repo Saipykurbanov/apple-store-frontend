@@ -1,3 +1,4 @@
+import PolicyLink from './components/PolicyLink';
 import './css/footer.scss';
 
 export default function Footer() {
@@ -12,6 +13,8 @@ export default function Footer() {
                 <a href="#store">магазин</a>
                 <a href="#repair">ремонт</a>
             </nav>
+
+           <PolicyLink />
 
             <p className="copyright">Copyright © 2024</p>
         </footer>

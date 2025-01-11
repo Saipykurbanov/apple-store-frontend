@@ -15,7 +15,7 @@ export default function StoreModal ({course}) {
 
     return (
         <div className={`store_modal_wrapper ${store.isOpen ? 'open' : ''}`} onMouseDown={store.closeModal}>
-            <div className="store_modal" onMouseDown={(e) => e.stopPropagation()}>
+            <form autoComplete="off" className="store_modal" onMouseDown={(e) => e.stopPropagation()}>
                 <ModalCloseBtn mode={'black'} callback={store.closeModal}/>
                 
                 {store.success ?
@@ -46,7 +46,7 @@ export default function StoreModal ({course}) {
                                 <ModalTitle mode={'black'}>
                                     Оставьте заявку и мы вам перезвоним! 
 
-                                    <div className="delivery">
+                                    <div className="delivery" onMouseDown={() => store.openPolicy('delivery')}>
                                         Условия доставки
                                         <div className="info">i</div>
                                     </div>
@@ -59,6 +59,7 @@ export default function StoreModal ({course}) {
                                         value={store.input.username}
                                         callback={(e) => store.changeInput(e.target.value, 'username')}
                                         error={store.error.username}
+                                        name={'storeName'}
                                     />
     
                                     <ModalInput 
@@ -67,16 +68,19 @@ export default function StoreModal ({course}) {
                                         value={store.input.address}
                                         callback={(e) => store.changeInput(e.target.value, 'address')}
                                         error={store.error.address}
+                                        name={'storeAdress'}
                                     />
     
                                     <ModalInput 
                                         label={'Номер телефона'}
+                                        type={'tel'}
                                         mode={'black'}
                                         value={store.input.phone}
                                         callback={(e) => Phone.onPhoneInput(e, store.setInput, store.setError)}
                                         onKeyDown={(e) => Phone.onPhoneKeyDown(e, store.setInput)}
                                         onPaste={(e) => Phone.onPhonePaste(e, store.setInput)}
                                         error={store.error.phone}
+                                        name={'storePhone'}
                                     />
                                 </div>
                             </div>
@@ -107,10 +111,18 @@ export default function StoreModal ({course}) {
                             </div>
                         </div>
     
-                        <ModalFooter loading={store.loading} callBack={store.sendData} mode={'black'}/>
+                        <ModalFooter 
+                            openPolicy={store.openPolicy} 
+                            loading={store.loading} 
+                            callBack={store.sendData} 
+                            mode={'black'}
+                            policy={store.policy}
+                            checkPolicy={store.checkPolicy}
+                            error={store.error.policy}
+                        />
                     </div>
                 }
-            </div>
+            </form>
         </div>
     )
 }
