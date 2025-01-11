@@ -8,6 +8,7 @@ export default function useStoreModal (course) {
     const [isOpen, setIsOpen] = useState(false)
     const [loading, setLoading] = useState(false)
     const [success, setSuccess] = useState(false)
+    const [policy, setPolicy] = useState(false)
     const [input, setInput] = useState({
         username: '',
         phone: '',
@@ -24,6 +25,7 @@ export default function useStoreModal (course) {
         username: false,
         phone: false,
         address: false,
+        policy: false,
     })
     const timer = useRef(null)
 
@@ -65,13 +67,23 @@ export default function useStoreModal (course) {
                 username: false,
                 phone: false,
                 address: false,
+                policy: false,
             })
             setSuccess(false)
+            setPolicy(false)
         }, 700)
     }
 
-    const sendData = async () => {
+    const sendData = async (e) => {
+        e.preventDefault()
+        
         let err = false
+
+        if(!policy) {
+            setError(prev => ({...prev, policy: 'Обязательное поле'}))
+            err = true
+        }
+
         if(input.username === '') {
             setError(prev => ({...prev, username: 'Обязательное поле'}))
             err = true
@@ -107,6 +119,15 @@ export default function useStoreModal (course) {
         }
     }
 
+    const openPolicy = (name) => {
+        Store.setListener('open_policy', [name, true])
+    }
+
+    const checkPolicy = () => {
+        setError(prev => ({...prev, policy: false}))
+        setPolicy(prev => prev ? false : true)
+    }
+
     useEffect(() => {
         return () => {
             if(timer.current) {
@@ -116,6 +137,7 @@ export default function useStoreModal (course) {
     }, [])
 
     return {
+        policy,
         isOpen,
         input,
         error,
@@ -126,5 +148,7 @@ export default function useStoreModal (course) {
         closeModal,
         changeInput,
         sendData,
+        openPolicy,
+        checkPolicy,
     }
 }

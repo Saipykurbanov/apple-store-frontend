@@ -14,7 +14,7 @@ export default function RepairModal ({services}) {
 
     return (
         <div className={`repair_modal_wrapper ${repair.isOpen ? 'open' : ''}`} onMouseDown={(e) => repair.closeModal(e, false)}>
-            <div className="repair_modal">
+            <form autoComplete='off' className="repair_modal">
                 <ModalCloseBtn mode={'white'} callback={(e) => repair.closeModal(e, true)}/>
 
                 {repair.success ? 
@@ -49,6 +49,7 @@ export default function RepairModal ({services}) {
                                 value={repair.input.name}
                                 callback={(e) => repair.changeInput(e.target.value, 'name')}
                                 error={repair.error.name}
+                                name={'repairName'}
                             />
 
                             <RepairInput 
@@ -59,6 +60,7 @@ export default function RepairModal ({services}) {
                             />
 
                             <ModalInput 
+                                type={'tel'}
                                 label={'Номер телефона'}
                                 mode={'white'}
                                 value={repair.input.phone}
@@ -66,14 +68,23 @@ export default function RepairModal ({services}) {
                                 onKeyDown={(e) => Phone.onPhoneKeyDown(e, repair.setInput)}
                                 onPaste={(e) => Phone.onPhonePaste(e, repair.setInput)}
                                 error={repair.error.phone}
+                                name={'repairPhone'}
                             />
                         </div>
 
-                        <ModalFooter loading={repair.loading} callBack={repair.sendData} mode={'white'}/>
+                        <ModalFooter 
+                            openPolicy={repair.openPolicy} 
+                            loading={repair.loading}
+                            callBack={repair.sendData} 
+                            mode={'white'}
+                            policy={repair.policy}
+                            checkPolicy={repair.checkPolicy}
+                            error={repair.error.policy}
+                        />
                     </div>
                 }
 
-            </div>
+            </form>
         </div>
     )
 }
