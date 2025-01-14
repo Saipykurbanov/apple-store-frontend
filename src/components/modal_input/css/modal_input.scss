@@ -1,0 +1,64 @@
+@import './../../../style/common';
+
+.modal_input {
+    position: relative;
+    width: 100%;
+    max-width: 760px;
+
+    & label {
+        display: block;
+        @include adaptiveFont(20, 14);
+        font-weight: 400;
+        margin-bottom: 10px;
+    }
+
+    & input {
+        border-radius: 30px;
+        width: 100%;
+        font-weight: 500;
+        @include adaptiveFont(16, 14);
+        @include adaptiveProperty(padding-top, 15, 10);
+        @include adaptiveProperty(padding-bottom, 15, 10);
+        @include adaptiveProperty(padding-left, 20, 13);
+        @include adaptiveProperty(padding-right, 20, 13);
+        transition: 0.3s;
+
+        &.error {
+            background-color: var(--error) !important;
+        }
+    }
+
+    
+
+    .error_message {
+        position: absolute;
+        top: calc(100% + 4px);
+        left: 0;
+        @include adaptiveFont(14, 12);
+        color: var(--red);
+        opacity: 0;
+        animation: Open 0.5s forwards;
+    }
+
+    &.white {
+        & label {
+            color: var(--white);
+        }
+
+        & input {
+            color: var(--black);
+            background-color: var(--white);
+        }
+    }
+
+    &.black {
+        & label {
+            color: var(--black);
+        }
+
+        & input {
+            color: var(--black);
+            background-color: var(--background-grey);
+        }
+    }
+}

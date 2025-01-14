@@ -1,0 +1,29 @@
+@import './../../../style/common';
+
+.modal_title {
+    width: 100%;
+    max-width: 560px;
+    font-weight: 500;
+    @include adaptiveProperty(margin-bottom, 55, 30);
+    @include adaptiveFont(40, 24);
+
+    &.white {
+        color: var(--white);
+    }
+
+    &.black {
+        color: var(--black);
+    }
+    
+    &.center {
+        text-align: center;
+    }
+
+    &.flex_left {
+        align-self: flex-start;
+    }
+
+    &.full {
+        max-width: unset;
+    }
+}

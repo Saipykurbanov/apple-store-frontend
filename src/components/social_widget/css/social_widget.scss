@@ -1,0 +1,19 @@
+@import './../../../style/common';
+
+.social_widget {
+    position: fixed;
+    bottom: 20dvh;
+    right: 0;
+    padding: 30px 9.5px;
+    background-color: var(--black);
+    border-radius: 10px 0px 0px 10px;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    flex-direction: column;
+    z-index: 100;
+
+    @include mediaMaxWidth(768) {
+        display: none;
+    }
+}

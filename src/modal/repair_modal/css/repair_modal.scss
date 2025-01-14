@@ -1,0 +1,239 @@
+@import './../../../style/common';
+
+.repair_modal_wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(0px);
+    background: transparent;
+    z-index: 100;
+    display: flex;
+    padding: 10px;
+    padding-bottom: 0;
+    overflow: auto;
+    transition: 0.7s ease;
+    transform: translateY(100%);
+    will-change: transform;
+    @include adaptiveProperty(padding-top, 100, 30);
+
+    .repair_modal {
+        margin: auto auto 0 auto;
+        position: relative;
+        width: 90%;
+        min-height: 100%;
+        background-color: var(--black);
+        border-radius: 30px 30px 0 0;
+        @include adaptiveProperty(padding, 60, 50);
+        @include adaptiveProperty(padding-left, 60, 20);
+        @include adaptiveProperty(padding-right, 60, 20);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+
+        @include mediaMaxWidth(768) {
+            width: 100%;
+        }
+
+        .success_message {
+            width: 100%;
+            text-align: center;
+            max-width: 560px;
+            opacity: 0;
+            animation: Open 2s forwards;
+
+            & svg {
+                position: relative;
+                margin-bottom: 30px;
+                .success_circle {
+                    fill: var(--black);
+                    stroke-width: 7px;
+                    stroke: var(--white);
+                    stroke-dasharray: 0 251.2;
+                    animation: successCircle 0.7s forwards;
+                }
+
+                & path {
+                    stroke: var(--blue);
+                    fill: none;
+                    stroke-dasharray: 120 200;
+                    stroke-dashoffset: 120;
+                    animation: successMark 1.2s forwards;
+                    animation-delay: 0.3s;
+                }
+            }
+            
+            & h4 {
+                color: var(--white);
+                @include adaptiveFont(30, 22);
+                font-weight: 500;
+                margin-bottom: 20px;
+            }
+
+            & p {
+                @include adaptiveFont(18, 16);
+                color: var(--semi-white);
+            }
+        }
+
+        .repair_modal_content {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+
+            .repair_modal_body {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 40px;
+                @include adaptiveProperty(gap, 40, 30);
+                margin-bottom: 40px;
+            }
+        }
+
+
+        .repair_input {
+            position: relative;
+            width: 100%;
+            max-width: 760px;
+            z-index: 1;
+
+            & label {
+                display: block;
+                @include adaptiveFont(20, 14);
+                font-weight: 400;
+                margin-bottom: 10px;
+                color: var(--white);
+            }
+            
+            .input_wrapper {
+                position: relative;
+                display: flex;
+                border-radius: 30px;
+                background: var(--white);
+                width: 100%;
+                cursor: pointer;
+                
+                .service_title {
+                    position: relative;
+                    border-radius: 30px;
+                    flex: 1;
+                    min-width: 0;
+                    font-weight: 500;
+                    color: var(--black);
+                    background-color: var(--white);
+                    display: flex;
+                    align-items: center;
+                    @include adaptiveFont(16, 14);
+                    @include adaptiveProperty(padding-left, 20, 13);
+                    @include adaptiveProperty(padding-right, 20, 13);
+                    z-index: 1;
+                }
+
+                & .main_button {
+                    position: relative;
+                    z-index: 1;
+                    @include adaptiveProperty(width, 50, 38);
+                    @include adaptiveProperty(height, 50, 38);
+                    @include mediaMinWidth(992) {
+                    }
+                }
+                .list_wrapper {
+                    position: absolute;
+                    top: calc(100% - 19px);
+                    left: 0;
+                    height: 0px;
+                    width: 100%;
+                    background-color: var(--white);
+                    border-radius: 0 0 30px 30px;
+                    overflow: hidden;
+                    transition: 0.5s;
+                    will-change: height;
+                    z-index: 0;
+                }
+                .list { 
+                    width: 100%;
+                    padding: 10px;
+                    padding-top: 30px;
+                    z-index: 0;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 10px;
+                    opacity: 0;
+                    transition: 0.5s;
+    
+                    & p {
+                        width: 100%;
+                        height: 50px;
+                        border-radius: 30px;
+                        background: #fff;
+                        @include adaptiveFont(18, 16);
+                        font-weight: 500;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        cursor: pointer;
+                        transition: 0.3s;
+    
+                        @include mediaMinWidth(992) {
+                            &:hover {
+                                background-color: var(--background-grey);
+                            }
+                        }
+                    }
+
+                    &.open {
+                        transition-delay: 0.5s;
+                        opacity: 1;
+                    }
+
+                    &.close {
+                        opacity: 0;
+                    }
+                }
+
+                
+            }
+        }
+    }
+
+    &.open {
+        transform: translateY(0%);
+        background: rgba(145, 145, 145, 0.588);
+        backdrop-filter: blur(10px);
+    }
+
+    // &.close {
+    //     animation: CloseModalWrapper 0.7s forwards;
+
+    //     .repair_modal {
+    //         animation: CloseModal 0.5s forwards;
+    //     }
+    // }
+}
+
+@keyframes successCircle {
+    0% {
+        stroke-dasharray: 0 251.2
+    }
+
+    100% {
+        stroke-dasharray: 252 251.2
+    }
+}
+
+@keyframes successMark {
+    0% {
+        stroke-dashoffset: 120
+    }
+
+    100% {
+        stroke-dashoffset: 0
+    }
+}

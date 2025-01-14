@@ -1,12 +1,31 @@
 @import './../../../style/common';
 
-.main_title {
-    @include adaptiveFont(64, 30);
-    font-weight: 500;
-    color: var(--black);
-    margin-bottom: 24px;
+
+.main_title_wrapper {
+    width: 100%;
+
+    .main_title {
+        @include adaptiveFont(64, 30);
+        font-weight: 500;
+        color: var(--black);
+        margin-bottom: 24px;
+    }
+
+    .main_title_description {
+        margin-top: 30px;
+        width: 100%;
+        max-width: 660px;
+        font-weight: 400;
+        color: var(--grey);
+    }
     
     &.white {
-        color: var(--white);
+        .main_title {
+            color: var(--white);
+        }
+        
+        .main_title_description {
+            color: var(--semi-white);
+        }
     }
 }

@@ -1,0 +1,187 @@
+@import './../../../style/common';
+
+
+header {
+    backdrop-filter: blur(5px);
+    background: rgba(221, 221, 221, 0.59); 
+    position: fixed;
+    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.25);
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 50px;
+    border-radius: 30px;
+    z-index: 100;
+    width: 90%;
+    max-width: 900px;
+    transition: 0.45s;
+    transition-timing-function: cubic-bezier(0.84, 0.18, 0.21, 1.16);
+    transition-delay: 0s;
+    
+    &.close {
+        max-width: 300px;
+        // transition-delay: 0.5s;
+
+        & nav.desc {
+            opacity: 0;
+            transition-delay: 0s;
+            pointer-events: none;
+        }
+
+        & nav.mob {
+            opacity: 1;
+            transition: 0.4s;
+            transition-delay: 0.4s;
+            pointer-events: all;
+        }
+    }
+
+    @include mediaMaxWidth(768) {
+        max-width: 300px;
+
+        & nav.desc {
+            display: none !important;
+            pointer-events: none !important;
+        }
+
+        & nav.mob {
+            opacity: 1 !important;
+            pointer-events: all !important;
+        }
+    }
+
+    & nav.desc {
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: flex;
+        align-items: center;
+        padding: 0 20px;
+        justify-content: space-evenly;
+        width: 100%;
+        height: 100%;
+        transition: 0.3s;
+        opacity: 1;
+        transition-delay: 0.4s;
+
+        & a {
+            position: relative;
+            @include adaptiveFont(16, 14);
+            color: var(--black);
+            font-weight: 500;
+            transition: 0.4s;
+    
+            &::before {
+                content: '';
+                position: absolute;
+                top: 50%;
+                left: -8px;
+                transform: translateY(-50%) scale(0);
+                width: 5px;
+                height: 5px;
+                border-radius: 50%;
+                background-color: var(--blue);
+                transition: 0.4s;
+            }
+    
+            &.active {
+                color: var(--blue);
+    
+                &::before {
+                    transform: translateY(-50%) scale(1);
+                }
+            }
+    
+            @include mediaMinWidth(992) {
+                &:hover {
+                    color: var(--blue);
+    
+                    &::before {
+                        transform: translateY(-50%) scale(1);
+                    }
+                }
+            }
+        }
+    }
+
+    & nav.mob {
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: flex;
+        align-items: center;
+        padding: 0 20px;
+        justify-content: space-around;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        pointer-events: none;
+        transition: 0.3s;
+        transition-delay: 0s;
+
+        & a {
+            position: relative;
+            transition: 0.4s;
+
+            & svg.custom {
+                & path {
+                    transition: 0.3s;
+                    fill: var(--black);
+                }
+            }
+
+            & svg.custom2 {
+                & path {
+                    transition: 0.3s;
+                    stroke: var(--black);
+                }
+            }
+    
+            &::before {
+                content: '';
+                position: absolute;
+                top: 100%;
+                left: 50%;
+                transform: translateX(-50%) scale(0);
+                width: 5px;
+                height: 5px;
+                border-radius: 50%;
+                background-color: var(--blue);
+                transition: 0.4s;
+            }
+    
+            &.active {
+                & svg.custom {
+                    & path {
+                        fill: var(--blue);
+                    }
+                }
+    
+                & svg.custom2 {
+                    & path {
+                        stroke: var(--blue);
+                    }
+                }
+                &:before {
+                    transform: translateX(-50%) scale(1);
+                }
+            }
+    
+            @include mediaMinWidth(992) {
+                &:hover {
+                    & svg.custom {
+                        & path {
+                            fill: var(--blue);
+                        }
+                    }
+        
+                    & svg.custom2 {
+                        & path {
+                            stroke: var(--blue);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

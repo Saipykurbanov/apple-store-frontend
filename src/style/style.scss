@@ -4,9 +4,12 @@
 :root {
 	--blue: #2397FE;
 	--black: #000;
-	--grey: #2E2D2D;
+	--grey: #292929;
 	--white: #fff;
+	--semi-white: rgba(255, 255, 255, 0.65);;
 	--background-grey: #F5F5F7;
+    --red: #ff2d2d;
+    --error: #ff8e8e;
 }
 /*-------- Обнуление ------*/
 *{
@@ -51,12 +54,14 @@ img{vertical-align: top;}
 h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
 
 body{
+	position: relative;
     font-family: var(--main-font);
-    // color: var(--text-color-dark);
+    color: var(--black);
     //padding-top: 90px;
     min-height: 100dvh;
     display: flex;
     flex-direction: column;
+    overflow: hidden;
 }
 
 input:-webkit-autofill,
@@ -71,7 +76,193 @@ input:-webkit-autofill:focus {
     caret-color: white;
 }
 
+*::-webkit-scrollbar {
+    width: 0px;
+}
+
 .container {
 	width: 100%;
 	@include adaptiveProperty(padding, 100, 15);
 }
+
+.no_products {
+    width: 100%;
+    min-height: 50dvh;
+    background-color: var(--background-grey);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--grey);
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.loading{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100dvh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: var(--white);
+    z-index: 500;
+    color: var(--black);
+    transition: 1s;
+    &.close {
+        transform: translateY(-100%);
+    }
+
+    & h2 {
+        position: relative;
+        font-weight: 550;
+        @include adaptiveFont(52, 26);
+        @include adaptiveProperty(margin-top, 50, 30);
+        animation: OpenTitle 0.7s forwards;
+        animation-delay: 0.8s;
+        opacity: 0;
+        transform: translateY(100%);
+    }
+
+    .loader {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        gap: 5px;
+        animation: Open 1s forwards;
+        animation-delay: 0.3s;
+        opacity: 0;
+        .loader_item {
+            display: flex;
+            align-items: center;
+
+            &:nth-child(1) {
+                @include adaptiveProperty(gap, 7, 3);
+            }
+        }
+        & img {
+            max-width: 9dvw;
+            pointer-events: none;
+            user-select: none; 
+            -webkit-user-select: none; 
+            -ms-user-select: none; 
+            // opacity: 0;
+            // animation: Shim 3s ease-in-out infinite;
+        }
+    }
+}
+
+.not_found {
+    width: 100%;
+    height: 100dvh;
+    background-color: var(--black);
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    .not_found_content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        & h1 {
+            @include adaptiveFont(130, 100);
+            font-weight: 700;
+            margin-bottom: 30px;
+            color: var(--blue);
+        }
+        
+        .description {
+            max-width: 500px;
+            text-align: center;
+            & h2 {
+                font-size: 20px;
+                font-weight: 500;
+                margin-bottom: 10px;
+                // color: var(--blue);
+            }
+            & p {
+                color: var(--semi-white);
+                font-size: 14px;
+                line-height: 1.2;
+            }
+        }
+
+        margin-bottom: 40px;
+    }
+}
+
+@keyframes OpenTitle {
+    0% {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0%);
+        opacity: 1;
+    }
+}
+
+@keyframes Open {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+@keyframes OpenModal {
+    0% {
+        transform: translateY(100%);
+    }
+    100% {
+        transform: translateY(0%);
+    }
+}
+
+@keyframes CloseModal {
+    0% {
+        transform: translateY(0%);
+    }
+    100% {
+        transform: translateY(100%);
+    }
+}
+
+@keyframes OpenModalWrapper {
+    0% {
+		backdrop-filter: blur(10px);
+        background-color: transparent;
+    }
+    100% {
+		backdrop-filter: blur(10px);
+        background: rgba(145, 145, 145, 0.588);
+    }
+}
+
+@keyframes CloseModalWrapper {
+    0% {
+		backdrop-filter: blur(0px);
+        background: rgba(145, 145, 145, 0.588);
+    }
+    100% {
+		backdrop-filter: blur(0px);
+        background-color: transparent;
+    }
+}
+
+@keyframes Shim {
+    0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(0.9);
+      }
+    }

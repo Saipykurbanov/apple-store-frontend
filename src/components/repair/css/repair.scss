@@ -1,0 +1,211 @@
+@import './../../../style/common';
+
+.repair {
+    background-color: var(--black);
+
+    .main_title_wrapper {
+        @include adaptiveProperty(padding-top, 100, 15);
+        @include adaptiveProperty(padding-left, 100, 15);
+        @include adaptiveProperty(padding-right, 100, 15);
+    }
+
+    .price_list {
+        position: relative;
+        margin-top: 70px;
+        z-index: 2;
+        
+        & h3 {
+            color: var(--white);
+            @include adaptiveFont(28, 24);
+            margin-bottom: 20px;
+            @include adaptiveProperty(padding-left, 100, 15);
+            @include adaptiveProperty(padding-right, 100, 15);
+        }
+
+        .splide {
+            .splide__track   {
+                padding: 20px 0;
+                @include adaptiveProperty(padding-left, 100, 15);
+                @include adaptiveProperty(padding-right, 100, 15);
+            }
+            .splide__slide  {
+                display: flex;
+                flex-direction: column;
+                @include adaptiveProperty(width, 320, 250);
+                @include adaptiveProperty(padding, 30, 15);
+                background-color: var(--white);
+                border-radius: 30px;
+                transition: transform 0.3s;
+                cursor: pointer;
+                
+                .service_image {
+                    position: relative;
+                    width: 40px;
+                    height: 40px;
+                    margin-right: auto;
+                    img {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        object-position: center;
+                        object-fit: contain;
+                    }
+                }
+
+                & h4 {
+                    font-weight: 500;
+                    @include adaptiveFont(28, 22);
+                    margin-top: 14px;
+                    margin-bottom: 10px;
+                    color: var(--black);
+                }
+
+                .description {
+                    font-weight: 300;
+                    font-size: 16px;
+                    @include adaptiveFont(16, 14);
+                    color: var(--black);
+                    margin-bottom: 25px;
+                }
+
+                .price {
+                    font-weight: 600;
+                    @include adaptiveFont(16, 14);
+                    margin-top: auto;
+
+                    & span {
+                        color: var(--blue);
+                    }
+                }
+
+                @include mediaMinWidth(992) {
+                    &:hover {
+                        transform: scale(1.03);
+                    }
+                }
+            }
+        }
+
+        .custom_arrows {
+            margin-top: 30px;
+            @include adaptiveProperty(padding-right, 100, 15);
+            @include adaptiveProperty(padding-left, 100, 15);
+            display: flex;
+            align-items: center;
+            gap: 20px;
+
+            .custom_arrow {
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 40px;
+                width: 40px;
+                flex-shrink: 0;
+                background: var(--white);
+                transition: 0.3s ease;
+                
+                &.prev svg {
+                    position: relative;
+                    right: 1px;
+                }
+                &.next svg {
+                    position: relative;
+                    left: 1px;
+                }
+
+                @include mediaMinWidth(992) {
+                    &:hover {
+                        box-shadow: 0 0 20px -5px var(--white);
+                    }
+                }
+            }
+        }
+
+        .button_flex {
+            margin-top: 60px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            @include adaptiveProperty(padding-right, 100, 15);
+            @include adaptiveProperty(padding-left, 100, 15);
+
+            .slogan {
+                font-size: 18px;
+                color: var(--white);
+                text-align: center;
+            }
+        }
+    }
+
+    .advantages {
+        position: relative;
+        display: flex;
+        align-items: center;
+        min-height: 800px;
+        width: 100%;
+        padding: 70px 0;
+        @include adaptiveProperty(padding-right, 130, 20);
+        @include adaptiveProperty(padding-left, 130, 20);
+
+        .advantages_container {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            z-index: 1;
+            
+            .advantages_item {
+                max-width: 420px;
+
+                & h3 {
+                    position: relative;
+                    font-weight: 500;
+                    @include adaptiveFont(20, 18);
+                    color: var(--white);
+                    margin-bottom: 20px;
+                    text-transform: uppercase;
+                    @include adaptiveProperty(padding-left, 46, 30);
+
+                    &::before {
+                        content: '';
+                        position: absolute;
+                        top: 50%;
+                        left: 0px;
+                        transform: translateY(-50%);
+                        border-radius: 50%;
+                        @include adaptiveProperty(height, 14, 10);
+                        @include adaptiveProperty(width, 14, 10);
+                        background-color: var(--blue);
+                        box-shadow: 0px 0px 15px 0px rgb(0, 135, 255);
+                    }
+                }
+
+                & p {
+                    line-height: 20px;
+                    @include adaptiveProperty(padding-left, 46, 30);
+                    @include adaptiveFont(16, 14);
+                    font-weight: 300;
+                    color: var(--semi-white);
+                }
+            }
+        }
+
+        .advantages_image {
+            position: absolute;
+            width: 40dvw;
+            max-width: 750px;
+            min-width: 350px;
+            right: 0;
+            bottom: 0;
+
+            @include mediaMaxWidth(768) {
+                display: none;
+            }
+        }
+    }
+}
