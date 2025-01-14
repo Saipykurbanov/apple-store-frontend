@@ -57,6 +57,12 @@ export default function RootLayout({ children }) {
         <meta property="og:image" content={metadata.openGraph.images[0]?.url} />
         <meta property="og:url" content={metadata.openGraph.url} />
         <meta property="og:site_name" content={metadata.openGraph.siteName} />
+        <link
+          rel="preload"
+          href="/images/main.svg"
+          as="image"
+          type="image/svg+xml"
+        />
       </Head>
 
       <body className={`${main.variable}`}>

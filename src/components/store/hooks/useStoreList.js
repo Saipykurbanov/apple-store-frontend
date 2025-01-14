@@ -71,53 +71,57 @@ export default function useStoreList (list, key) {
     })
     
     useEffect(() => {
-        const handleTouchMove = (e) => {
-            const touch = e.touches[0]; 
-            const deltaX = touch.clientX - (blockRef.current.startX || touch.clientX);
-            blockRef.current.startX = touch.clientX;
-            
-            setScroll((prev) => {
-                const scroll = prev - deltaX
-
-                if(scroll < 0) {
-                    return 0
-                } 
+        if(blockRef.current) {
+            const handleTouchMove = (e) => {
+                const touch = e.touches[0]; 
+                const deltaX = touch.clientX - (blockRef.current.startX || touch.clientX);
+                blockRef.current.startX = touch.clientX;
+                
+                setScroll((prev) => {
+                    const scroll = prev - deltaX
     
-                const limit = ((storeRef.current.offsetWidth * newList.length) + ((newList.length - 1) * 30)) - blockRef.current.offsetWidth
+                    if(scroll < 0) {
+                        return 0
+                    } 
+        
+                    const limit = ((storeRef.current.offsetWidth * newList.length) + ((newList.length - 1) * 30)) - blockRef.current.offsetWidth
+        
+                    if(scroll > limit) {
+                        return limit
+                    }
     
-                if(scroll > limit) {
-                    return limit
-                }
-
-                const positionMax = pageNum * (blockRef.current.offsetWidth + 30)
-                const positionMin = (pageNum - 1) * (blockRef.current.offsetWidth + 30)
-
-                if(deltaX > 0) { //скролл влево
-                    if((scroll) < (positionMin + 30)) {
-                        prevPage(true) 
+                    const positionMax = pageNum * (blockRef.current.offsetWidth + 30)
+                    const positionMin = (pageNum - 1) * (blockRef.current.offsetWidth + 30)
+    
+                    if(deltaX > 0) { //скролл влево
+                        if((scroll) < (positionMin + 30)) {
+                            prevPage(true) 
+                        }
+                    } else if(deltaX < 0) { //скролл вправо
+                        if((scroll) > (positionMax + (blockRef.current.offsetWidth - 30))) {
+                            nextPage(true)
+                        }
                     }
-                } else if(deltaX < 0) { //скролл вправо
-                    if((scroll) > (positionMax + (blockRef.current.offsetWidth - 30))) {
-                        nextPage(true)
-                    }
-                }
-
-                return scroll
-            });
-        };
+    
+                    return scroll
+                });
+            };  
     
         const handleTouchStart = (e) => {
             blockRef.current.startX = e.touches[0].clientX;
+            
         };
 
         const container = blockRef.current;
-        container.addEventListener("touchstart", handleTouchStart);
-        container.addEventListener("touchmove", handleTouchMove);
+        container.addEventListener("touchstart", handleTouchStart, {passive: false});
+        container.addEventListener("touchmove", handleTouchMove, {passive: false});
 
         return () => {
             container.removeEventListener("touchstart", handleTouchStart);
             container.removeEventListener("touchmove", handleTouchMove);
         };
+
+    }
     }, [newList, pageNum])
 
 
