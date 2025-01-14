@@ -46,7 +46,7 @@ export default function ModalFooter ({mode, callBack, loading, openPolicy, check
                     </svg>
                 </a>
 
-                <a href="">
+                <a href="https://t.me/Vaitov_06">
                     <svg width="23" viewBox="0 0 17.5 14.5833" fill="none" style={{left: '-1px'}}>
                         <desc>
                                 Created with Pixso.
