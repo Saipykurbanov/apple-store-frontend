@@ -21,16 +21,17 @@ export default function useRepairModal (services) {
         policy: false,
     })
     const timer = useRef(null)
+    const modal = useRef(null)
 
     Store.useListener('open_repair_modal', (data) => {
+        setIsOpen(true)
         if(data) {
-            setInput(prev => ({...prev, service_name: data.title}))
+            setInput(prev => ({...prev, service_name: data?.title}))
             setPrice(data.price)
         } else {
-            setInput(prev => ({...prev, service_name: services[0].title}))
+            setInput(prev => ({...prev, service_name: services[0]?.title}))
         }
 
-        setIsOpen(true)
     })
 
     const changeInput = (value, name) => {
@@ -47,8 +48,9 @@ export default function useRepairModal (services) {
         // e.preventDefault()
         if(e.target === e.currentTarget || key) {
             document.body.style.overflow = 'visible'
-            setIsOpen(false)
+            modal.current.className = 'repair_modal_wrapper close'
             timer.current = setTimeout(() => {
+                setIsOpen(false)
                 setInput({
                     name: '',
                     service_name: '',
@@ -139,5 +141,6 @@ export default function useRepairModal (services) {
         sendData,
         openPolicy,
         checkPolicy,
+        modal,
     }
 }

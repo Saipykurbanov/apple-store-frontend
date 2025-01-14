@@ -52,7 +52,7 @@ export default function useHeader () {
 
     useEffect(() => {
         if(window.innerWidth > 768) {
-            window.addEventListener('scroll', onScrollFunction)
+            window.addEventListener('scroll', onScrollFunction, {passive: true})
         }
 
         return () => {

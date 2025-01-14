@@ -13,7 +13,7 @@ export default function ModalInput ({type = 'text', mode, label, value, callback
                 onChange={callback}
                 onPaste={onPaste}
                 onKeyDown={onKeyDown}
-                maxlength="50"
+                maxLength="50"
                 name={name}
             />
 
