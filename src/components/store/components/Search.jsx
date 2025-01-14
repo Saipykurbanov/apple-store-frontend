@@ -41,7 +41,7 @@ export default function Search ({list}) {
         <div className="search_wrapper">
             <div className={`search_container ${isOpen ? 'open' : ''}`}>
                 <form autoCorrect="off" className="search">
-                    <input ref={inputsRef} type="text" value={searchValue} onInput={(e) => searching(e, e.target.value)} maxlength="50" autoComplete="off"/>  
+                    <input ref={inputsRef} type="text" value={searchValue} onInput={(e) => searching(e, e.target.value)} maxLength="50" autoComplete="off"/>  
                 </form>
 
                 <Button mode={`round black`} callback={openSearch}>

@@ -12,8 +12,10 @@ export default function RepairModal ({services}) {
 
     const repair = useRepairModal(services)
 
+    if(!repair.isOpen) return null
+
     return (
-        <div className={`repair_modal_wrapper ${repair.isOpen ? 'open' : ''}`} onMouseDown={(e) => repair.closeModal(e, false)}>
+        <div ref={repair.modal} className={`repair_modal_wrapper open`} onMouseDown={(e) => repair.closeModal(e, false)}>
             <form autoComplete='off' className="repair_modal">
                 <ModalCloseBtn mode={'white'} callback={(e) => repair.closeModal(e, true)}/>
 
@@ -55,7 +57,7 @@ export default function RepairModal ({services}) {
                             <RepairInput 
                                 label={'Какая услуга вам нужна?'}
                                 services={services}
-                                value={repair.input.service_name}
+                                value={repair.input?.service_name}
                                 callback={repair.changeService}
                             />
 

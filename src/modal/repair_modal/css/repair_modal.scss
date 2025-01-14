@@ -14,9 +14,24 @@
     padding-bottom: 0;
     overflow: auto;
     transition: 0.7s ease;
-    transform: translateY(100%);
     will-change: transform;
     @include adaptiveProperty(padding-top, 100, 30);
+    
+    &.open {
+        animation: OpenModalWrapper 0.7s ease forwards;
+    }
+
+    &.close {
+        animation-play-state: paused;
+        animation: CloseModalWrapper 0.7s ease forwards;
+    }
+    // transform: translateY(100%);
+
+    // &.open {
+    //     transform: translateY(0%);
+    //     background: rgba(145, 145, 145, 0.588);
+    //     backdrop-filter: blur(10px);
+    // }
 
     .repair_modal {
         margin: auto auto 0 auto;
@@ -201,12 +216,6 @@
                 
             }
         }
-    }
-
-    &.open {
-        transform: translateY(0%);
-        background: rgba(145, 145, 145, 0.588);
-        backdrop-filter: blur(10px);
     }
 
     // &.close {

@@ -49,11 +49,20 @@ export default function RootLayout({ children }) {
         <meta name="keywords" content={metadata.keywords.join(', ')} />
         <meta name="author" content={metadata.author} />
         <meta name="robots" content="index, follow" />
+        <meta name="viewport" content="height=device-height, 
+                  width=device-width, initial-scale=1, minimum-scale=1,
+                  maximum-scale=1.0, user-scalable=no, target-densitydpi=device-dpi" />
         <meta property="og:title" content={metadata.openGraph.title} />
         <meta property="og:description" content={metadata.openGraph.description} />
         <meta property="og:image" content={metadata.openGraph.images[0]?.url} />
         <meta property="og:url" content={metadata.openGraph.url} />
         <meta property="og:site_name" content={metadata.openGraph.siteName} />
+        <link
+          rel="preload"
+          href="/images/main.svg"
+          as="image"
+          type="image/svg+xml"
+        />
       </Head>
 
       <body className={`${main.variable}`}>

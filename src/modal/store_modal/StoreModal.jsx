@@ -13,8 +13,10 @@ export default function StoreModal ({course}) {
 
     const store = useStoreModal(course)
 
+    if(!store.isOpen) return null
+
     return (
-        <div className={`store_modal_wrapper ${store.isOpen ? 'open' : ''}`} onMouseDown={store.closeModal}>
+        <div ref={store.modal} className={`store_modal_wrapper open`} onMouseDown={store.closeModal}>
             <form autoComplete="off" className="store_modal" onMouseDown={(e) => e.stopPropagation()}>
                 <ModalCloseBtn mode={'black'} callback={store.closeModal}/>
                 
