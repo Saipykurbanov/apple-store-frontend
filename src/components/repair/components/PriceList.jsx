@@ -98,12 +98,12 @@ const PriceList = ({services}) => {
                         </svg>
                     </button>
                 </div>
+                <div className="button_flex">
+                    <Button callback={() => openModal()}>Узнать подробности</Button>
+                    <div className="slogan">Нашли свою проблему? Тогда свяжитесь с нами!</div>
+                </div>
             </>
             :<></>}
-            <div className="button_flex">
-                <Button callback={() => openModal()}>Узнать подробности</Button>
-                {services.length ? <div className="slogan">Нашли свою проблему? Тогда свяжитесь с нами!</div> : <></>}
-            </div>
             
         </div>
     );

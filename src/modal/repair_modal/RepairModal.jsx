@@ -53,7 +53,7 @@ export default function RepairModal ({services}) {
                                 error={repair.error.name}
                                 name={'repairName'}
                             />
-
+                            
                             <RepairInput 
                                 label={'Какая услуга вам нужна?'}
                                 services={services}

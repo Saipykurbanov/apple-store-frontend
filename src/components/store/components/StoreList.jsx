@@ -46,7 +46,7 @@ export default function StoreList ({list, course}) {
                     /> 
                 }
             </>
-            :<div className="no_products">Товаров нет.</div>}
+            :<div className="no_products" ref={storeList.blockRef}>Товаров нет.</div>}
         </>
     )
 }
