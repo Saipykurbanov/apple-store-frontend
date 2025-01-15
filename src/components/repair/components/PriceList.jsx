@@ -34,7 +34,7 @@ const PriceList = ({services}) => {
     return (
         <div className='price_list' ref={blockRef}>
 
-            {services.length ? 
+            {services?.length ? 
             <>
                 <h3>Прайс лист</h3>
 
@@ -53,7 +53,7 @@ const PriceList = ({services}) => {
                     
                 >   
                 
-                    {services.map((el) => (
+                    {services?.map((el) => (
                         <SplideSlide key={el.servicesid} onClick={() => openModal(el)}>
                             <div className='service_image'>
                                 <Image 
@@ -98,12 +98,12 @@ const PriceList = ({services}) => {
                         </svg>
                     </button>
                 </div>
+                <div className="button_flex">
+                    <Button callback={() => openModal()}>Узнать подробности</Button>
+                    <div className="slogan">Нашли свою проблему? Тогда свяжитесь с нами!</div>
+                </div>
             </>
             :<></>}
-            <div className="button_flex">
-                <Button callback={() => openModal()}>Узнать подробности</Button>
-                {services.length ? <div className="slogan">Нашли свою проблему? Тогда свяжитесь с нами!</div> : <></>}
-            </div>
             
         </div>
     );

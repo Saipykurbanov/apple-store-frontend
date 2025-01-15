@@ -71,7 +71,7 @@ export default function useStoreList (list, key) {
     })
     
     useEffect(() => {
-        if(blockRef.current) {
+        if(storeRef.current) {
             const handleTouchMove = (e) => {
                 const touch = e.touches[0]; 
                 const deltaX = touch.clientX - (blockRef.current.startX || touch.clientX);
