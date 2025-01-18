@@ -16,7 +16,7 @@ export default function Footer() {
 
            <PolicyLink />
 
-            <p className="copyright">Copyright © 2024</p>
+            <p className="copyright">Copyright © 2025</p>
         </footer>
     )
 }
