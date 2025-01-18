@@ -16,7 +16,7 @@ export default function RepairModal ({services}) {
 
     return (
         <div ref={repair.modal} className={`repair_modal_wrapper open`} onMouseDown={(e) => repair.closeModal(e, false)}>
-            <form autoComplete='off' className="repair_modal">
+            <form onSubmit={repair.sendData} autoComplete='off' className="repair_modal">
                 <ModalCloseBtn mode={'white'} callback={(e) => repair.closeModal(e, true)}/>
 
                 {repair.success ? 
@@ -53,13 +53,6 @@ export default function RepairModal ({services}) {
                                 error={repair.error.name}
                                 name={'repairName'}
                             />
-                            
-                            <RepairInput 
-                                label={'Какая услуга вам нужна?'}
-                                services={services}
-                                value={repair.input?.service_name}
-                                callback={repair.changeService}
-                            />
 
                             <ModalInput 
                                 type={'tel'}
@@ -72,12 +65,18 @@ export default function RepairModal ({services}) {
                                 error={repair.error.phone}
                                 name={'repairPhone'}
                             />
+
+                            <RepairInput 
+                                label={'Какая услуга вам нужна?'}
+                                services={services}
+                                value={repair.input?.service_name}
+                                callback={repair.changeService}
+                            />
                         </div>
 
                         <ModalFooter 
                             openPolicy={repair.openPolicy} 
                             loading={repair.loading}
-                            callBack={repair.sendData} 
                             mode={'white'}
                             policy={repair.policy}
                             checkPolicy={repair.checkPolicy}
