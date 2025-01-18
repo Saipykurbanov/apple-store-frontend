@@ -40,7 +40,7 @@ export default function RepairInput ({ label, value, callback, services,  }) {
             <div className={`input_wrapper`} onClick={(e) => openList(e)}  >
                 <div className="service_title" mode={'round whiteBack'}>{value}</div>
 
-                <Button callback={(e) => openList(e)} mode={'round whiteBack'}><img src="/icons/arrow_down.svg" alt="" /></Button>
+                <Button type='button' callback={(e) => openList(e)} mode={'round whiteBack'}><img src="/icons/arrow_down.svg" alt="" /></Button>
 
                 <div className={`list_wrapper ${!isOpen ? 'close' : ''}`} ref={listWrapper}>
                     <div className={`list open`} ref={list}>

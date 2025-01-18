@@ -119,12 +119,24 @@ export default function useRepairModal (services) {
     }
 
     useEffect(() => {
-        return () => {
-            if(timer.current) {
-                clearTimeout(timer.current)
+        if(isOpen) {
+            const handleBackButton = (e) => {
+                e.preventDefault(); 
+                closeModal(e, true)
+            };
+        
+            window.addEventListener('popstate', handleBackButton);
+        
+            history.pushState(null, '', window.location.href);
+            
+            return () => {
+                window.removeEventListener('popstate', handleBackButton);
+                if(timer.current) {
+                    clearTimeout(timer.current)
+                }
             }
         }
-    }, [])
+    }, [isOpen])
 
     return {
         policy,

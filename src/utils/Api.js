@@ -1,7 +1,7 @@
 const Api = {}
 
-Api.url = 'https://api.ifixstore.ru/'
-// Api.url = 'http://localhost:5000/'
+// Api.url = 'https://api.ifixstore.ru/'
+Api.url = 'http://localhost:5000/'
 Api.domain = 'api.ifixstore.ru'
 
 Api.get = async (path) => {

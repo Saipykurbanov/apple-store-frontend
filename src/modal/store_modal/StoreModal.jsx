@@ -18,7 +18,7 @@ export default function StoreModal ({course}) {
 
     return (
         <div ref={store.modal} className={`store_modal_wrapper open`} onMouseDown={store.closeModal}>
-            <form autoComplete="off" className="store_modal" onMouseDown={(e) => e.stopPropagation()}>
+            <form onSubmit={store.sendData} autoComplete="off" className="store_modal" onMouseDown={(e) => e.stopPropagation()}>
                 <ModalCloseBtn mode={'black'} callback={store.closeModal}/>
                 
                 {store.success ?
@@ -126,7 +126,6 @@ export default function StoreModal ({course}) {
                         <ModalFooter 
                             openPolicy={store.openPolicy} 
                             loading={store.loading} 
-                            callBack={store.sendData} 
                             mode={'black'}
                             policy={store.policy}
                             checkPolicy={store.checkPolicy}

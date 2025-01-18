@@ -17,10 +17,13 @@ header {
     transition: 0.45s;
     transition-timing-function: cubic-bezier(0.84, 0.18, 0.21, 1.16);
     transition-delay: 0s;
+
+    @include mediaMaxWidth(768) {
+        bottom: 10px;
+    }
     
     &.close {
         max-width: 300px;
-        // transition-delay: 0.5s;
 
         & nav.desc {
             opacity: 0;
