@@ -5,7 +5,7 @@ export default function Footer() {
 
     return (
         <footer>
-            <div className="logo"><span></span>iFix<span> Store.</span></div>
+            <div className="logo"><span></span>ifix<span>Store.</span></div>
             {/* <img src="/icons/logo.svg" alt="" className="logo" /> */}
 
             <nav>
