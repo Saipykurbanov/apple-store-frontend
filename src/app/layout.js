@@ -10,7 +10,7 @@ const main = Montserrat({
 });
 
 export const metadata = {
-  title: "Сервис-маркет техники в г. Симферополь | iFix Store",
+  title: "Сервис-маркет техники в г. Симферополь | ifixStore",
   description: "Ремонт любых смартфонов и бытовой электроники быстро и качественно. Продаём iPhone со склада без наценок по самым выгодным ценам. Гарантия на ремонт и устройства.",
   keywords: [
     'Сервис-маркет техники',
@@ -24,9 +24,9 @@ export const metadata = {
     'ремонт бытовой электроники Симферополь', 
     'Ремонт планшетов Симферополь'
   ],
-  author: "iFix Store",
+  author: "ifixStore",
   openGraph: {
-      title: 'Сервис-маркет техники в г. Симферополь | iFix Store',
+      title: 'Сервис-маркет техники в г. Симферополь | ifixStore',
       // url: meta?.og_url,
       description: "Ремонт любых смартфонов и бытовой электроники быстро и качественно. Продаём iPhone со склада без наценок по самым выгодным ценам. Гарантия на ремонт и устройства.",
       images: [
@@ -36,7 +36,7 @@ export const metadata = {
           height: 400
         },
       ],
-      siteName: 'iFix Store',
+      siteName: 'ifixStore',
   }
 }
 
