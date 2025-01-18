@@ -13,7 +13,7 @@ export default function ModalFooter ({mode, callBack, loading, openPolicy, check
                 {error ? <div className="error_message">{error}</div> : <></>}
             </div>
 
-            <Button callback={callBack}>
+            <Button type='submit'>
                 {loading ? 'Отправка...' : 'Оставить заявку'}
             </Button>
 
@@ -30,7 +30,7 @@ export default function ModalFooter ({mode, callBack, loading, openPolicy, check
                     </svg>
                 </a>
 
-                <a href="">
+                <a href="https://vk.com/id879685221?from=search">
                     <svg width="27.000000" height="27.000000" viewBox="0 0 27 27" fill="none" style={{left: '-1px', top: '1px'}}>
                         <desc>
                                 Created with Pixso.
