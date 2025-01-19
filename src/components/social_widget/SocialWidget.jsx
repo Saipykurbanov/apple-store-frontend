@@ -7,7 +7,7 @@ SocialWidget() {
 
     return (
         <div className="social_widget">
-            <a href="tel:+79781368790">
+            <a href="tel:+79788414831">
                 <Image 
                     src="./icons/phone.svg"
                     width={0} 

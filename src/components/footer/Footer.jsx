@@ -16,7 +16,7 @@ export default function Footer() {
 
            <PolicyLink />
 
-            <p className="copyright">Copyright © 2025</p>
+            <p className="copyright">© 2025 ifixStore. <br></br> Все права защищены.</p>
         </footer>
     )
 }

@@ -2,7 +2,7 @@
 import Button from '../button/Button';
 import './css/modal_footer.scss';
 
-export default function ModalFooter ({mode, callBack, loading, openPolicy, checkPolicy, policy, error}) {
+export default function ModalFooter ({mode, loading, openPolicy, checkPolicy, policy, error}) {
 
     return (
         <div className={`modal_footer ${mode}`}>
@@ -20,7 +20,7 @@ export default function ModalFooter ({mode, callBack, loading, openPolicy, check
             <p className="text">или свяжитесь любым удобным для вас способом</p>
 
             <div className="social_flex">
-                <a href="">
+                <a href="tel:+79788414831">
                     <svg width="23" viewBox="0 0 18 18" fill="none">
                         <desc>
                                 Created with Pixso.
