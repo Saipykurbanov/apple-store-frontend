@@ -1,6 +1,7 @@
 import { Montserrat } from "next/font/google";
 import './../style/style.scss';
 import Script from "next/script";
+import Api from "@/utils/Api";
 
 const main = Montserrat({ 
   subsets: ["latin"],
@@ -30,7 +31,7 @@ export const metadata = {
       description: "Ремонт любых смартфонов и бытовой электроники быстро и качественно. Продаём iPhone со склада без наценок по самым выгодным ценам. Гарантия на ремонт и устройства.",
       images: [
         {
-          url: `/images/logo.jpeg`,
+          url: `${Api.url}images/logo.jpeg`,
           width: 500,
           height: 400
         },
