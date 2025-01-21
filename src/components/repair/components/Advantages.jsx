@@ -22,7 +22,7 @@ const Advantages = () => {
             
             <Image 
                 className='advantages_image' 
-                src="/images/phone.svg"
+                src="/images/phone.webp"
                 width={0} 
                 height={0} 
                 style={{ width: '40dvw', height: 'auto' }} 
