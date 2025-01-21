@@ -19,7 +19,7 @@ const Loading = () => {
         <div className={`loading ${load ? 'open':'close'}`}>
             <div className="loader">
                 <Image 
-                    src="/icons/load/loader.svg"
+                    src="/icons/load/loader.webp"
                     width={0} 
                     height={0} 
                     style={{ width: '100%', height: 'auto' }} 

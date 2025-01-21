@@ -51,9 +51,9 @@ export default function RootLayout({ children }) {
         <link rel="icon" href={`/icons/favicon.ico`}/>
         <link
           rel="preload"
-          href="/images/main.svg"
+          href="/images/main.webp"
           as="image"
-          type="image/svg+xml"
+          type="image/webp"
         />
       </head>
 
