@@ -17,8 +17,8 @@ export default async function Home() {
   const store = await Api.get(`api/products/all`) || []
   const services = await Api.get('api/services/all') || []
   let course = await Api.get('api/course/dollar') || 0
+  const visit = await Api.post('api/visits/add')
   course = course.value / 100
-  await Api.post('api/visits/add')
 
   return (
     <>
