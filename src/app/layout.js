@@ -1,7 +1,7 @@
 import { Montserrat } from "next/font/google";
 import './../style/style.scss';
 import Script from "next/script";
-import Head from "next/head";
+import Api from "@/utils/Api";
 
 const main = Montserrat({ 
   subsets: ["latin"],
@@ -10,7 +10,7 @@ const main = Montserrat({
 });
 
 export const metadata = {
-  title: "Сервис-маркет техники в г. Симферополь | iFix Store",
+  title: "Сервис-маркет техники в г. Симферополь | ifixStore",
   description: "Ремонт любых смартфонов и бытовой электроники быстро и качественно. Продаём iPhone со склада без наценок по самым выгодным ценам. Гарантия на ремонт и устройства.",
   keywords: [
     'Сервис-маркет техники',
@@ -24,37 +24,38 @@ export const metadata = {
     'ремонт бытовой электроники Симферополь', 
     'Ремонт планшетов Симферополь'
   ],
-  author: "iFix Store",
+  author: "ifixStore",
   openGraph: {
-      title: 'Сервис-маркет техники в г. Симферополь | iFix Store',
-      // url: meta?.og_url,
+      title: 'Сервис-маркет техники в г. Симферополь | ifixStore',
+      url: 'ifixstore.ru',
       description: "Ремонт любых смартфонов и бытовой электроники быстро и качественно. Продаём iPhone со склада без наценок по самым выгодным ценам. Гарантия на ремонт и устройства.",
       images: [
         {
-          // url: `${Api.url}/images/${meta?.og_image}`,
+          url: `${Api.url}images/logo.jpeg`,
           width: 500,
           height: 400
         },
       ],
-      siteName: 'iFix Store',
+      siteName: 'ifixStore',
   }
 }
 
 export default function RootLayout({ children }) {
   return (
     <html lang="ru">
-      <Head>
-        <title>{metadata.title}</title>
-        <meta name="description" content={metadata.description} />
-        <meta name="keywords" content={metadata.keywords.join(', ')} />
-        <meta name="author" content={metadata.author} />
+      <head>
         <meta name="robots" content="index, follow" />
-        <meta property="og:title" content={metadata.openGraph.title} />
-        <meta property="og:description" content={metadata.openGraph.description} />
-        <meta property="og:image" content={metadata.openGraph.images[0]?.url} />
-        <meta property="og:url" content={metadata.openGraph.url} />
-        <meta property="og:site_name" content={metadata.openGraph.siteName} />
-      </Head>
+        <meta name="viewport" content="height=device-height, 
+                  width=device-width, initial-scale=1, minimum-scale=1,
+                  maximum-scale=1.0, user-scalable=no, target-densitydpi=device-dpi" />
+        <link rel="icon" href={`/icons/favicon.ico`}/>
+        <link
+          rel="preload"
+          href="/images/main.webp"
+          as="image"
+          type="image/webp"
+        />
+      </head>
 
       <body className={`${main.variable}`}>
         <Script 

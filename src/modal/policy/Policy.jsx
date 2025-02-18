@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import ModalCloseBtn from "@/components/modal_close_btn/ModalCloseBtn";
 import ModalTitle from "@/components/modal_title/ModalTitle";
 import TabsContent from "./components/TabsContent";
@@ -14,6 +14,7 @@ export default function Policy () {
     const [isBlock, setIsBlock] = useState(false)
     const [tab, setTab] = useState('policy')
     const modal = useRef(null)
+    const timer = useRef(null)
 
     Store.useListener('open_policy', (data) => {
         setIsOpen(true)
@@ -29,12 +30,38 @@ export default function Policy () {
         if(!isBlock) {
             document.body.style.overflow = 'visible'
         }
+        modal.current.className = 'policy_modal_wrapper close'
         setIsBlock(false)
-        setIsOpen(false)
+        timer.current = setTimeout(() => {
+            setIsOpen(false)
+        }, [700])
     }
 
+    useEffect(() => {
+        if(isOpen) {
+            const handleBackButton = (e) => {
+                e.preventDefault(); 
+                closeModal(e)
+            };
+        
+            window.addEventListener('popstate', handleBackButton);
+        
+            history.pushState(null, '', window.location.href);
+
+            return () => {
+                window.removeEventListener('popstate', handleBackButton);
+
+                if(timer.current) {
+                    clearTimeout(timer.current)
+                }
+            }
+        }
+    }, [isOpen])
+
+    if(!isOpen) return null
+
     return (
-        <div className={`policy_modal_wrapper ${isOpen ? 'open' : ''}`} ref={modal} onMouseDown={(e) => closeModal(e)}>
+        <div className={`policy_modal_wrapper open`} ref={modal} onMouseDown={(e) => closeModal(e)}>
             <div className="policy_modal" onMouseDown={(e) => e.stopPropagation()}>
                 <ModalCloseBtn mode={'black'} callback={(e) => closeModal(e)}/>
 

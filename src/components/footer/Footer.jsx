@@ -5,7 +5,7 @@ export default function Footer() {
 
     return (
         <footer>
-            <div className="logo"><span></span>iFix<span> Store.</span></div>
+            <div className="logo"><span></span>ifix<span>Store.</span></div>
             {/* <img src="/icons/logo.svg" alt="" className="logo" /> */}
 
             <nav>
@@ -16,7 +16,7 @@ export default function Footer() {
 
            <PolicyLink />
 
-            <p className="copyright">Copyright © 2024</p>
+            <p className="copyright">© 2025 ifixStore. <br></br> Все права защищены.</p>
         </footer>
     )
 }

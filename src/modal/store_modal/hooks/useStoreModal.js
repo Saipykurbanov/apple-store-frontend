@@ -28,6 +28,7 @@ export default function useStoreModal (course) {
         policy: false,
     })
     const timer = useRef(null)
+    const modal = useRef(null)
 
     Store.useListener('open_store_modal', (data) => {
         setIsOpen(true)
@@ -49,7 +50,7 @@ export default function useStoreModal (course) {
 
     const closeModal = () => {
         document.body.style.overflow = 'visible'
-        setIsOpen(false)
+        modal.current.className = 'store_modal_wrapper close'
         timer.current = setTimeout(() => {
             setInput({
                 username: '',
@@ -71,6 +72,7 @@ export default function useStoreModal (course) {
             })
             setSuccess(false)
             setPolicy(false)
+            setIsOpen(false)
         }, 700)
     }
 
@@ -129,12 +131,25 @@ export default function useStoreModal (course) {
     }
 
     useEffect(() => {
-        return () => {
-            if(timer.current) {
-                clearTimeout(timer.current)
+        if(isOpen) {
+            const handleBackButton = (e) => {
+                e.preventDefault(); 
+                closeModal()
+            };
+        
+            window.addEventListener('popstate', handleBackButton);
+        
+            history.pushState(null, '', window.location.href);
+
+            return () => {
+                window.removeEventListener('popstate', handleBackButton);
+
+                if(timer.current) {
+                    clearTimeout(timer.current)
+                }
             }
         }
-    }, [])
+    }, [isOpen])
 
     return {
         policy,
@@ -150,5 +165,6 @@ export default function useStoreModal (course) {
         sendData,
         openPolicy,
         checkPolicy,
+        modal,
     }
 }

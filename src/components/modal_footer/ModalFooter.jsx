@@ -2,7 +2,7 @@
 import Button from '../button/Button';
 import './css/modal_footer.scss';
 
-export default function ModalFooter ({mode, callBack, loading, openPolicy, checkPolicy, policy, error}) {
+export default function ModalFooter ({mode, loading, openPolicy, checkPolicy, policy, error}) {
 
     return (
         <div className={`modal_footer ${mode}`}>
@@ -13,14 +13,14 @@ export default function ModalFooter ({mode, callBack, loading, openPolicy, check
                 {error ? <div className="error_message">{error}</div> : <></>}
             </div>
 
-            <Button callback={callBack}>
+            <Button type='submit'>
                 {loading ? 'Отправка...' : 'Оставить заявку'}
             </Button>
 
             <p className="text">или свяжитесь любым удобным для вас способом</p>
 
             <div className="social_flex">
-                <a href="">
+                <a href="tel:+79788414831">
                     <svg width="23" viewBox="0 0 18 18" fill="none">
                         <desc>
                                 Created with Pixso.
@@ -30,7 +30,7 @@ export default function ModalFooter ({mode, callBack, loading, openPolicy, check
                     </svg>
                 </a>
 
-                <a href="">
+                <a href="https://vk.com/id879685221?from=search">
                     <svg width="27.000000" height="27.000000" viewBox="0 0 27 27" fill="none" style={{left: '-1px', top: '1px'}}>
                         <desc>
                                 Created with Pixso.

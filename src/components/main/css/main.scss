@@ -2,13 +2,16 @@
 
 .main {
     width: 100%;
-    background-image: url('/images/main.svg');
+    background-image: url('/images/main.webp');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: right;
-    height: 100dvh;
     flex-shrink: 0;
     min-height: max-content;
+    
+    @include mediaMinWidth(992) {
+        height: 100dvh;
+    }
 
     .content {
         width: 60%;
@@ -44,10 +47,14 @@
                 @include adaptiveFont(64, 30);
                 font-weight: 600;
                 margin-bottom: 55px;
+
+                @include mediaMaxWidth(992) {
+                    margin-top: 100px;
+                }
             }
 
             .description_item {
-                @include adaptiveFont(16, 14);
+                font-size: 16px;
                 color: var(--grey);
                 max-width: 555px;
                 font-weight: 500;
